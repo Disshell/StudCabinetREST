@@ -34,7 +34,7 @@ namespace StudCabinetREST.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("server=localhost;port=3306;user=root;password=12345;database=dbstud");
+                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=StudDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
@@ -60,23 +60,23 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdApplication)
                     .HasColumnName("id_application")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdDirection)
                     .HasColumnName("id_direction")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdFaculty)
                     .HasColumnName("id_faculty")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdSpecialization)
                     .HasColumnName("id_specialization")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdStudentInfo)
                     .HasColumnName("id_student_info")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.HasOne(d => d.IdDirectionNavigation)
                     .WithMany(p => p.Application)
@@ -117,7 +117,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdStudentInfo)
                     .HasColumnName("id_student_info")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.AddressFact)
                     .HasColumnName("address_fact")
@@ -155,11 +155,11 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.Gender)
                     .HasColumnName("gender")
-                    .HasColumnType("tinyint(4)");
+                    .HasColumnType("tinyint");
 
                 entity.Property(e => e.IdPassport)
                     .HasColumnName("id_passport")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Language)
                     .HasColumnName("language")
@@ -178,7 +178,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.NeedOfHostel)
                     .HasColumnName("need_of_hostel")
-                    .HasColumnType("tinyint(4)");
+                    .HasColumnType("tinyint");
 
                 entity.Property(e => e.Phone)
                     .HasColumnName("phone")
@@ -192,7 +192,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.StatusIdStatus)
                     .HasColumnName("status_id_status")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.StudentInfocol)
                     .HasColumnName("student_infocol")
@@ -230,7 +230,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdCertificateType)
                     .HasColumnName("id_certificate_type")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -246,7 +246,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdDirection)
                     .HasColumnName("id_direction")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -271,19 +271,19 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdEducation)
                     .HasColumnName("id_education")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdCertificateType)
                     .HasColumnName("id_certificate_type")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdInstitutionType)
                     .HasColumnName("id_institution_type")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdStudentInfo)
                     .HasColumnName("id_student_info")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.InstitutionName)
                     .HasColumnName("institution_name")
@@ -292,7 +292,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.Point)
                     .HasColumnName("point")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.HasOne(d => d.IdCertificateTypeNavigation)
                     .WithMany(p => p.Education)
@@ -327,7 +327,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdExams)
                     .HasColumnName("id_exams")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Examcol)
                     .HasColumnName("examcol")
@@ -336,15 +336,15 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdStudentInfo)
                     .HasColumnName("id_student_info")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.ObjectId)
                     .HasColumnName("object_id")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Point)
                     .HasColumnName("point")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.HasOne(d => d.IdStudentInfoNavigation)
                     .WithMany(p => p.Exam)
@@ -367,7 +367,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdFaculty)
                     .HasColumnName("id_faculty")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -383,7 +383,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdNstitutionType)
                     .HasColumnName("id_nstitution_type")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -397,7 +397,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.ObjectId)
                     .HasColumnName("object_id")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -413,7 +413,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdPassport)
                     .HasColumnName("id_passport")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.DateOfIssue)
                     .HasColumnName("date_of_issue")
@@ -446,11 +446,11 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdPrivileges)
                     .HasColumnName("id_privileges")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdStudentInfo)
                     .HasColumnName("id_student_info")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -475,11 +475,11 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdAward)
                     .HasColumnName("id_award")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.IdStudentInfo)
                     .HasColumnName("id_student_info")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -501,7 +501,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdSpecialization)
                     .HasColumnName("id_specialization")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -517,7 +517,7 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdStatus)
                     .HasColumnName("id_status")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")

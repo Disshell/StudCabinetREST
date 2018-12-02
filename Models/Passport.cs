@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace StudCabinetREST.Models
 {
-    public partial class Passport
+    public class Passport
     {
         public Passport()
         {

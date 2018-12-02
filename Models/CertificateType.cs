@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace StudCabinetREST.Models
 {
-    public partial class CertificateType
+    public class CertificateType
     {
         public CertificateType()
         {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudCabinetREST.Models;
 
 namespace StudCabinetREST.Migrations
 {
     [DbContext(typeof(StudDBContext))]
-    partial class StudDBContextModelSnapshot : ModelSnapshot
+    [Migration("20181201143230_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +41,7 @@ namespace StudCabinetREST.Migrations
                         .HasColumnName("id_faculty")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdSpecialization")
+                    b.Property<int>("IdSpecialization")
                         .HasColumnName("id_specialization")
                         .HasColumnType("int");
 
@@ -102,7 +104,7 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.Property<byte>("Gender")
+                    b.Property<byte?>("Gender")
                         .HasColumnName("gender")
                         .HasColumnType("tinyint");
 
@@ -125,7 +127,7 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.Property<byte>("NeedOfHostel")
+                    b.Property<byte?>("NeedOfHostel")
                         .HasColumnName("need_of_hostel")
                         .HasColumnType("tinyint");
 
@@ -142,6 +144,10 @@ namespace StudCabinetREST.Migrations
                     b.Property<int>("StatusIdStatus")
                         .HasColumnName("status_id_status")
                         .HasColumnType("int");
+
+                    b.Property<string>("StudentInfocol");
+
+                    b.Property<string>("StudentInfocol1");
 
                     b.Property<string>("Surename")
                         .HasColumnName("surename")
@@ -444,7 +450,7 @@ namespace StudCabinetREST.Migrations
             modelBuilder.Entity("StudCabinetREST.Models.Application", b =>
                 {
                     b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Applications")
+                        .WithMany("Application")
                         .HasForeignKey("IdApplicationMainInfo")
                         .HasConstraintName("fk_application_application_main_info1");
 
@@ -480,7 +486,7 @@ namespace StudCabinetREST.Migrations
             modelBuilder.Entity("StudCabinetREST.Models.Education", b =>
                 {
                     b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Educations")
+                        .WithMany("Education")
                         .HasForeignKey("IdApplicationMainInfo")
                         .HasConstraintName("fk_education_application_main_info1");
 
@@ -498,7 +504,7 @@ namespace StudCabinetREST.Migrations
             modelBuilder.Entity("StudCabinetREST.Models.Exam", b =>
                 {
                     b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Exams")
+                        .WithMany("Exam")
                         .HasForeignKey("IdApplicationMainInfo")
                         .HasConstraintName("fk_exam_application_main_info1");
 
@@ -511,7 +517,7 @@ namespace StudCabinetREST.Migrations
             modelBuilder.Entity("StudCabinetREST.Models.Privilege", b =>
                 {
                     b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Privileges")
+                        .WithMany("Privilege")
                         .HasForeignKey("IdApplicationMainInfo")
                         .HasConstraintName("fk_privilege_application_main_info1");
                 });
@@ -519,7 +525,7 @@ namespace StudCabinetREST.Migrations
             modelBuilder.Entity("StudCabinetREST.Models.Reward", b =>
                 {
                     b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Rewards")
+                        .WithMany("Reward")
                         .HasForeignKey("IdApplicationMainInfo")
                         .HasConstraintName("fk_reward_application_main_info1");
                 });

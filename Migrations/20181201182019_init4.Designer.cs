@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudCabinetREST.Models;
 
 namespace StudCabinetREST.Migrations
 {
     [DbContext(typeof(StudDBContext))]
-    partial class StudDBContextModelSnapshot : ModelSnapshot
+    [Migration("20181201182019_init4")]
+    partial class init4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,7 +104,7 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.Property<byte>("Gender")
+                    b.Property<byte?>("Gender")
                         .HasColumnName("gender")
                         .HasColumnType("tinyint");
 
@@ -125,7 +127,7 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.Property<byte>("NeedOfHostel")
+                    b.Property<byte?>("NeedOfHostel")
                         .HasColumnName("need_of_hostel")
                         .HasColumnType("tinyint");
 
@@ -142,6 +144,8 @@ namespace StudCabinetREST.Migrations
                     b.Property<int>("StatusIdStatus")
                         .HasColumnName("status_id_status")
                         .HasColumnType("int");
+
+                    b.Property<string>("StudentInfocol");
 
                     b.Property<string>("Surename")
                         .HasColumnName("surename")

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace StudCabinetREST.Models
 {
-    public partial class Object
+    public class Object
     {
         public Object()
         {

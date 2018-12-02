@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace StudCabinetREST.Models
 {
-    public partial class StudDBContext : DbContext
+    public class StudDBContext : DbContext
     {
         public StudDBContext()
         {
@@ -25,7 +25,7 @@ namespace StudCabinetREST.Models
         public virtual DbSet<InstitutionType> InstitutionType { get; set; }
         public virtual DbSet<Object> Object { get; set; }
         public virtual DbSet<Passport> Passport { get; set; }
-        public virtual DbSet<Privileges> Privileges { get; set; }
+        public virtual DbSet<Privilege> Privileges { get; set; }
         public virtual DbSet<Reward> Reward { get; set; }
         public virtual DbSet<Specialization> Specialization { get; set; }
         public virtual DbSet<Status> Status { get; set; }
@@ -55,8 +55,8 @@ namespace StudCabinetREST.Models
                 entity.HasIndex(e => e.IdSpecialization)
                     .HasName("fk_application_specialization1_idx");
 
-                entity.HasIndex(e => e.IdStudentInfo)
-                    .HasName("fk_application_student_info1_idx");
+                entity.HasIndex(e => e.IdApplicationMainInfo)
+                    .HasName("fk_application_application_main_info1_idx");
 
                 entity.Property(e => e.IdApplication)
                     .HasColumnName("id_application")
@@ -72,10 +72,11 @@ namespace StudCabinetREST.Models
 
                 entity.Property(e => e.IdSpecialization)
                     .HasColumnName("id_specialization")
-                    .HasColumnType("int");
+                    .HasColumnType("int")
+                    .IsRequired(false);
 
-                entity.Property(e => e.IdStudentInfo)
-                    .HasColumnName("id_student_info")
+                entity.Property(e => e.IdApplicationMainInfo)
+                    .HasColumnName("id_application_main_info")
                     .HasColumnType("int");
 
                 entity.HasOne(d => d.IdDirectionNavigation)
@@ -96,27 +97,27 @@ namespace StudCabinetREST.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_application_specialization1");
 
-                entity.HasOne(d => d.IdStudentInfoNavigation)
-                    .WithMany(p => p.Application)
-                    .HasForeignKey(d => d.IdStudentInfo)
+                entity.HasOne(d => d.IdApplicationMainInfoNavigation)
+                    .WithMany(p => p.Applications)
+                    .HasForeignKey(d => d.IdApplicationMainInfo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_application_student_info1");
+                    .HasConstraintName("fk_application_application_main_info1");
             });
 
             modelBuilder.Entity<ApplicationMainInfo>(entity =>
             {
-                entity.HasKey(e => e.IdStudentInfo);
+                entity.HasKey(e => e.IdApplicationMainInfo);
 
                 entity.ToTable("application_main_info", "dbstud");
 
                 entity.HasIndex(e => e.IdPassport)
-                    .HasName("fk_student_info_passport_idx");
+                    .HasName("fk_application_main_info_passport_idx");
 
                 entity.HasIndex(e => e.StatusIdStatus)
                     .HasName("fk_application_main_info_status1_idx");
 
-                entity.Property(e => e.IdStudentInfo)
-                    .HasColumnName("id_student_info")
+                entity.Property(e => e.IdApplicationMainInfo)
+                    .HasColumnName("id_application_main_info")
                     .HasColumnType("int");
 
                 entity.Property(e => e.AddressFact)
@@ -190,19 +191,10 @@ namespace StudCabinetREST.Models
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
+
                 entity.Property(e => e.StatusIdStatus)
                     .HasColumnName("status_id_status")
                     .HasColumnType("int");
-
-                entity.Property(e => e.StudentInfocol)
-                    .HasColumnName("student_infocol")
-                    .HasMaxLength(45)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.StudentInfocol1)
-                    .HasColumnName("student_infocol1")
-                    .HasMaxLength(45)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.Surename)
                     .HasColumnName("surename")
@@ -213,7 +205,7 @@ namespace StudCabinetREST.Models
                     .WithMany(p => p.ApplicationMainInfo)
                     .HasForeignKey(d => d.IdPassport)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_student_info_passport");
+                    .HasConstraintName("fk_application_main_info_passport");
 
                 entity.HasOne(d => d.StatusIdStatusNavigation)
                     .WithMany(p => p.ApplicationMainInfo)
@@ -266,8 +258,8 @@ namespace StudCabinetREST.Models
                 entity.HasIndex(e => e.IdInstitutionType)
                     .HasName("fk_education_institution_type1_idx");
 
-                entity.HasIndex(e => e.IdStudentInfo)
-                    .HasName("fk_education_student_info1_idx");
+                entity.HasIndex(e => e.IdApplicationMainInfo)
+                    .HasName("fk_education_application_main_info1_idx");
 
                 entity.Property(e => e.IdEducation)
                     .HasColumnName("id_education")
@@ -281,8 +273,8 @@ namespace StudCabinetREST.Models
                     .HasColumnName("id_institution_type")
                     .HasColumnType("int");
 
-                entity.Property(e => e.IdStudentInfo)
-                    .HasColumnName("id_student_info")
+                entity.Property(e => e.IdApplicationMainInfo)
+                    .HasColumnName("id_application_main_info")
                     .HasColumnType("int");
 
                 entity.Property(e => e.InstitutionName)
@@ -306,11 +298,11 @@ namespace StudCabinetREST.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_education_institution_type1");
 
-                entity.HasOne(d => d.IdStudentInfoNavigation)
-                    .WithMany(p => p.Education)
-                    .HasForeignKey(d => d.IdStudentInfo)
+                entity.HasOne(d => d.IdApplicationMainInfoNavigation)
+                    .WithMany(p => p.Educations)
+                    .HasForeignKey(d => d.IdApplicationMainInfo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_education_student_info1");
+                    .HasConstraintName("fk_education_application_main_info1");
             });
 
             modelBuilder.Entity<Exam>(entity =>
@@ -319,8 +311,8 @@ namespace StudCabinetREST.Models
 
                 entity.ToTable("exam", "dbstud");
 
-                entity.HasIndex(e => e.IdStudentInfo)
-                    .HasName("fk_exam_student_info1_idx");
+                entity.HasIndex(e => e.IdApplicationMainInfo)
+                    .HasName("fk_exam_applicatin_main_info1_idx");
 
                 entity.HasIndex(e => e.ObjectId)
                     .HasName("fk_exam_object1_idx");
@@ -329,13 +321,8 @@ namespace StudCabinetREST.Models
                     .HasColumnName("id_exams")
                     .HasColumnType("int");
 
-                entity.Property(e => e.Examcol)
-                    .HasColumnName("examcol")
-                    .HasMaxLength(45)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.IdStudentInfo)
-                    .HasColumnName("id_student_info")
+                entity.Property(e => e.IdApplicationMainInfo)
+                    .HasColumnName("id_application_main_info")
                     .HasColumnType("int");
 
                 entity.Property(e => e.ObjectId)
@@ -346,11 +333,11 @@ namespace StudCabinetREST.Models
                     .HasColumnName("point")
                     .HasColumnType("int");
 
-                entity.HasOne(d => d.IdStudentInfoNavigation)
-                    .WithMany(p => p.Exam)
-                    .HasForeignKey(d => d.IdStudentInfo)
+                entity.HasOne(d => d.IdApplicationMainInfoNavigation)
+                    .WithMany(p => p.Exams)
+                    .HasForeignKey(d => d.IdApplicationMainInfo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_exam_student_info1");
+                    .HasConstraintName("fk_exam_application_main_info1");
 
                 entity.HasOne(d => d.Object)
                     .WithMany(p => p.Exam)
@@ -435,21 +422,21 @@ namespace StudCabinetREST.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Privileges>(entity =>
+            modelBuilder.Entity<Privilege>(entity =>
             {
-                entity.HasKey(e => e.IdPrivileges);
+                entity.HasKey(e => e.IdPrivilege);
 
-                entity.ToTable("privileges", "dbstud");
+                entity.ToTable("privilege", "dbstud");
 
-                entity.HasIndex(e => e.IdStudentInfo)
-                    .HasName("fk_privileges_student_info1_idx");
+                entity.HasIndex(e => e.IdApplicationMainInfo)
+                    .HasName("fk_privilege_application_main_info1_idx");
 
-                entity.Property(e => e.IdPrivileges)
-                    .HasColumnName("id_privileges")
+                entity.Property(e => e.IdPrivilege)
+                    .HasColumnName("id_privilege")
                     .HasColumnType("int");
 
-                entity.Property(e => e.IdStudentInfo)
-                    .HasColumnName("id_student_info")
+                entity.Property(e => e.IdApplicationMainInfo)
+                    .HasColumnName("id_application_main")
                     .HasColumnType("int");
 
                 entity.Property(e => e.Name)
@@ -457,11 +444,11 @@ namespace StudCabinetREST.Models
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdStudentInfoNavigation)
+                entity.HasOne(d => d.IdApplicationMainInfoNavigation)
                     .WithMany(p => p.Privileges)
-                    .HasForeignKey(d => d.IdStudentInfo)
+                    .HasForeignKey(d => d.IdApplicationMainInfo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_privileges_student_info1");
+                    .HasConstraintName("fk_privilege_application_main_info1");
             });
 
             modelBuilder.Entity<Reward>(entity =>
@@ -470,15 +457,15 @@ namespace StudCabinetREST.Models
 
                 entity.ToTable("reward", "dbstud");
 
-                entity.HasIndex(e => e.IdStudentInfo)
-                    .HasName("fk_reward_student_info1_idx");
+                entity.HasIndex(e => e.IdApplicationMainInfo)
+                    .HasName("fk_reward_application_main_info1_idx");
 
                 entity.Property(e => e.IdAward)
                     .HasColumnName("id_award")
                     .HasColumnType("int");
 
-                entity.Property(e => e.IdStudentInfo)
-                    .HasColumnName("id_student_info")
+                entity.Property(e => e.IdApplicationMainInfo)
+                    .HasColumnName("id_application_main_info")
                     .HasColumnType("int");
 
                 entity.Property(e => e.Name)
@@ -486,11 +473,11 @@ namespace StudCabinetREST.Models
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdStudentInfoNavigation)
-                    .WithMany(p => p.Reward)
-                    .HasForeignKey(d => d.IdStudentInfo)
+                entity.HasOne(d => d.IdApplicationMainInfoNavigation)
+                    .WithMany(p => p.Rewards)
+                    .HasForeignKey(d => d.IdApplicationMainInfo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_reward_student_info1");
+                    .HasConstraintName("fk_reward_application_main_info1");
             });
 
             modelBuilder.Entity<Specialization>(entity =>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StudCabinetREST.Models;
+using AutoMapper;
 
 namespace StudCabinetREST
 {
@@ -22,6 +23,7 @@ namespace StudCabinetREST
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
             services.AddDbContext<StudDBContext>(option => option.UseSqlServer(Configuration["ConnectionString:Default"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace StudCabinetREST.Models
 {
-    public partial class InstitutionType
+    public class InstitutionType
     {
         public InstitutionType()
         {

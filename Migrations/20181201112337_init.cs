@@ -18,7 +18,7 @@ namespace StudCabinetREST.Migrations
                 {
                     id_certificate_type = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,7 +32,7 @@ namespace StudCabinetREST.Migrations
                 {
                     id_direction = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,7 +46,7 @@ namespace StudCabinetREST.Migrations
                 {
                     id_faculty = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,7 +60,7 @@ namespace StudCabinetREST.Migrations
                 {
                     id_nstitution_type = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,7 +74,7 @@ namespace StudCabinetREST.Migrations
                 {
                     object_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,9 +88,9 @@ namespace StudCabinetREST.Migrations
                 {
                     id_passport = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    series = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    number = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    department = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
+                    series = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    number = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    department = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
                     date_of_issue = table.Column<DateTime>(type: "date", nullable: true)
                 },
                 constraints: table =>
@@ -105,7 +105,7 @@ namespace StudCabinetREST.Migrations
                 {
                     id_specialization = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -119,7 +119,7 @@ namespace StudCabinetREST.Migrations
                 {
                     id_status = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -135,22 +135,22 @@ namespace StudCabinetREST.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     id_passport = table.Column<int>(type: "int", nullable: false),
                     status_id_status = table.Column<int>(type: "int", nullable: false),
-                    citizenship = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    surename = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    student_infocol = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    middle_name = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    date_of_birth = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    student_infocol1 = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
+                    citizenship = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    surename = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    student_infocol = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    middle_name = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    date_of_birth = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    student_infocol1 = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
                     gender = table.Column<byte>(type: "tinyint", nullable: true),
-                    birthplace = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    phone = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    phone_home = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    email = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
-                    address_pasport = table.Column<string>(unicode: false, maxLength: 400, nullable: true),
-                    address_fact = table.Column<string>(unicode: false, maxLength: 400, nullable: true),
+                    birthplace = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    phone = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    phone_home = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    email = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
+                    address_pasport = table.Column<string>(unicode: true, maxLength: 400, nullable: true),
+                    address_fact = table.Column<string>(unicode: true, maxLength: 400, nullable: true),
                     need_of_hostel = table.Column<byte>(type: "tinyint", nullable: true),
-                    language = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
+                    language = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
                     date_of_application = table.Column<DateTime>(type: "date", nullable: true)
                 },
                 constraints: table =>
@@ -227,7 +227,7 @@ namespace StudCabinetREST.Migrations
                     id_student_info = table.Column<int>(type: "int", nullable: false),
                     id_institution_type = table.Column<int>(type: "int", nullable: false),
                     id_certificate_type = table.Column<int>(type: "int", nullable: false),
-                    institution_name = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
+                    institution_name = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
                     point = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -265,7 +265,7 @@ namespace StudCabinetREST.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     id_student_info = table.Column<int>(type: "int", nullable: false),
                     object_id = table.Column<int>(type: "int", nullable: false),
-                    examcol = table.Column<string>(unicode: false, maxLength: 45, nullable: true),
+                    examcol = table.Column<string>(unicode: true, maxLength: 45, nullable: true),
                     point = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -288,20 +288,20 @@ namespace StudCabinetREST.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "privileges",
+                name: "privilege",
                 schema: "dbstud",
                 columns: table => new
                 {
-                    id_privileges = table.Column<int>(type: "int", nullable: false)
+                    id_privilege = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     id_student_info = table.Column<int>(type: "int", nullable: false),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_privileges", x => x.id_privileges);
+                    table.PrimaryKey("PK_privilege", x => x.id_privilege);
                     table.ForeignKey(
-                        name: "fk_privileges_student_info1",
+                        name: "fk_privilege_student_info1",
                         column: x => x.id_student_info,
                         principalSchema: "dbstud",
                         principalTable: "application_main_info",
@@ -317,7 +317,7 @@ namespace StudCabinetREST.Migrations
                     id_award = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     id_student_info = table.Column<int>(type: "int", nullable: false),
-                    name = table.Column<string>(unicode: false, maxLength: 45, nullable: true)
+                    name = table.Column<string>(unicode: true, maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -398,9 +398,9 @@ namespace StudCabinetREST.Migrations
                 column: "object_id");
 
             migrationBuilder.CreateIndex(
-                name: "fk_privileges_student_info1_idx",
+                name: "fk_privilege_student_info1_idx",
                 schema: "dbstud",
-                table: "privileges",
+                table: "privilege",
                 column: "id_student_info");
 
             migrationBuilder.CreateIndex(
@@ -425,7 +425,7 @@ namespace StudCabinetREST.Migrations
                 schema: "dbstud");
 
             migrationBuilder.DropTable(
-                name: "privileges",
+                name: "privilege",
                 schema: "dbstud");
 
             migrationBuilder.DropTable(

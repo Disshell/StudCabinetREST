@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudCabinetREST.Models;
 
 namespace StudCabinetREST.Migrations
 {
     [DbContext(typeof(StudDBContext))]
-    partial class StudDBContextModelSnapshot : ModelSnapshot
+    [Migration("20181201112337_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,10 +29,6 @@ namespace StudCabinetREST.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdApplicationMainInfo")
-                        .HasColumnName("id_application_main_info")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdDirection")
                         .HasColumnName("id_direction")
                         .HasColumnType("int");
@@ -39,14 +37,15 @@ namespace StudCabinetREST.Migrations
                         .HasColumnName("id_faculty")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdSpecialization")
+                    b.Property<int>("IdSpecialization")
                         .HasColumnName("id_specialization")
                         .HasColumnType("int");
 
-                    b.HasKey("IdApplication");
+                    b.Property<int>("IdStudentInfo")
+                        .HasColumnName("id_student_info")
+                        .HasColumnType("int");
 
-                    b.HasIndex("IdApplicationMainInfo")
-                        .HasName("fk_application_application_main_info1_idx");
+                    b.HasKey("IdApplication");
 
                     b.HasIndex("IdDirection")
                         .HasName("fk_application_direction1_idx");
@@ -57,14 +56,17 @@ namespace StudCabinetREST.Migrations
                     b.HasIndex("IdSpecialization")
                         .HasName("fk_application_specialization1_idx");
 
+                    b.HasIndex("IdStudentInfo")
+                        .HasName("fk_application_student_info1_idx");
+
                     b.ToTable("application","dbstud");
                 });
 
             modelBuilder.Entity("StudCabinetREST.Models.ApplicationMainInfo", b =>
                 {
-                    b.Property<int>("IdApplicationMainInfo")
+                    b.Property<int>("IdStudentInfo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id_application_main_info")
+                        .HasColumnName("id_student_info")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -102,7 +104,7 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.Property<byte>("Gender")
+                    b.Property<byte?>("Gender")
                         .HasColumnName("gender")
                         .HasColumnType("tinyint");
 
@@ -125,7 +127,7 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.Property<byte>("NeedOfHostel")
+                    b.Property<byte?>("NeedOfHostel")
                         .HasColumnName("need_of_hostel")
                         .HasColumnType("tinyint");
 
@@ -143,15 +145,25 @@ namespace StudCabinetREST.Migrations
                         .HasColumnName("status_id_status")
                         .HasColumnType("int");
 
+                    b.Property<string>("StudentInfocol")
+                        .HasColumnName("student_infocol")
+                        .HasMaxLength(45)
+                        .IsUnicode(false);
+
+                    b.Property<string>("StudentInfocol1")
+                        .HasColumnName("student_infocol1")
+                        .HasMaxLength(45)
+                        .IsUnicode(false);
+
                     b.Property<string>("Surename")
                         .HasColumnName("surename")
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.HasKey("IdApplicationMainInfo");
+                    b.HasKey("IdStudentInfo");
 
                     b.HasIndex("IdPassport")
-                        .HasName("fk_application_main_info_passport_idx");
+                        .HasName("fk_student_info_passport_idx");
 
                     b.HasIndex("StatusIdStatus")
                         .HasName("fk_application_main_info_status1_idx");
@@ -203,16 +215,16 @@ namespace StudCabinetREST.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdApplicationMainInfo")
-                        .HasColumnName("id_application_main_info")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdCertificateType")
                         .HasColumnName("id_certificate_type")
                         .HasColumnType("int");
 
                     b.Property<int>("IdInstitutionType")
                         .HasColumnName("id_institution_type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdStudentInfo")
+                        .HasColumnName("id_student_info")
                         .HasColumnType("int");
 
                     b.Property<string>("InstitutionName")
@@ -226,14 +238,14 @@ namespace StudCabinetREST.Migrations
 
                     b.HasKey("IdEducation");
 
-                    b.HasIndex("IdApplicationMainInfo")
-                        .HasName("fk_education_application_main_info1_idx");
-
                     b.HasIndex("IdCertificateType")
                         .HasName("fk_education_certificate_type1_idx");
 
                     b.HasIndex("IdInstitutionType")
                         .HasName("fk_education_institution_type1_idx");
+
+                    b.HasIndex("IdStudentInfo")
+                        .HasName("fk_education_student_info1_idx");
 
                     b.ToTable("education","dbstud");
                 });
@@ -246,8 +258,13 @@ namespace StudCabinetREST.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdApplicationMainInfo")
-                        .HasColumnName("id_application_main_info")
+                    b.Property<string>("Examcol")
+                        .HasColumnName("examcol")
+                        .HasMaxLength(45)
+                        .IsUnicode(false);
+
+                    b.Property<int>("IdStudentInfo")
+                        .HasColumnName("id_student_info")
                         .HasColumnType("int");
 
                     b.Property<int>("ObjectId")
@@ -260,8 +277,8 @@ namespace StudCabinetREST.Migrations
 
                     b.HasKey("IdExams");
 
-                    b.HasIndex("IdApplicationMainInfo")
-                        .HasName("fk_exam_applicatin_main_info1_idx");
+                    b.HasIndex("IdStudentInfo")
+                        .HasName("fk_exam_student_info1_idx");
 
                     b.HasIndex("ObjectId")
                         .HasName("fk_exam_object1_idx");
@@ -363,8 +380,8 @@ namespace StudCabinetREST.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdApplicationMainInfo")
-                        .HasColumnName("id_application_main")
+                    b.Property<int>("IdStudentInfo")
+                        .HasColumnName("id_student_info")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -374,8 +391,8 @@ namespace StudCabinetREST.Migrations
 
                     b.HasKey("IdPrivilege");
 
-                    b.HasIndex("IdApplicationMainInfo")
-                        .HasName("fk_privilege_application_main_info1_idx");
+                    b.HasIndex("IdStudentInfo")
+                        .HasName("fk_privilege_student_info1_idx");
 
                     b.ToTable("privilege","dbstud");
                 });
@@ -388,8 +405,8 @@ namespace StudCabinetREST.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdApplicationMainInfo")
-                        .HasColumnName("id_application_main_info")
+                    b.Property<int>("IdStudentInfo")
+                        .HasColumnName("id_student_info")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -399,8 +416,8 @@ namespace StudCabinetREST.Migrations
 
                     b.HasKey("IdAward");
 
-                    b.HasIndex("IdApplicationMainInfo")
-                        .HasName("fk_reward_application_main_info1_idx");
+                    b.HasIndex("IdStudentInfo")
+                        .HasName("fk_reward_student_info1_idx");
 
                     b.ToTable("reward","dbstud");
                 });
@@ -443,11 +460,6 @@ namespace StudCabinetREST.Migrations
 
             modelBuilder.Entity("StudCabinetREST.Models.Application", b =>
                 {
-                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Applications")
-                        .HasForeignKey("IdApplicationMainInfo")
-                        .HasConstraintName("fk_application_application_main_info1");
-
                     b.HasOne("StudCabinetREST.Models.Direction", "IdDirectionNavigation")
                         .WithMany("Application")
                         .HasForeignKey("IdDirection")
@@ -462,6 +474,11 @@ namespace StudCabinetREST.Migrations
                         .WithMany("Application")
                         .HasForeignKey("IdSpecialization")
                         .HasConstraintName("fk_application_specialization1");
+
+                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdStudentInfoNavigation")
+                        .WithMany("Application")
+                        .HasForeignKey("IdStudentInfo")
+                        .HasConstraintName("fk_application_student_info1");
                 });
 
             modelBuilder.Entity("StudCabinetREST.Models.ApplicationMainInfo", b =>
@@ -469,7 +486,7 @@ namespace StudCabinetREST.Migrations
                     b.HasOne("StudCabinetREST.Models.Passport", "IdPassportNavigation")
                         .WithMany("ApplicationMainInfo")
                         .HasForeignKey("IdPassport")
-                        .HasConstraintName("fk_application_main_info_passport");
+                        .HasConstraintName("fk_student_info_passport");
 
                     b.HasOne("StudCabinetREST.Models.Status", "StatusIdStatusNavigation")
                         .WithMany("ApplicationMainInfo")
@@ -479,11 +496,6 @@ namespace StudCabinetREST.Migrations
 
             modelBuilder.Entity("StudCabinetREST.Models.Education", b =>
                 {
-                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Educations")
-                        .HasForeignKey("IdApplicationMainInfo")
-                        .HasConstraintName("fk_education_application_main_info1");
-
                     b.HasOne("StudCabinetREST.Models.CertificateType", "IdCertificateTypeNavigation")
                         .WithMany("Education")
                         .HasForeignKey("IdCertificateType")
@@ -493,14 +505,19 @@ namespace StudCabinetREST.Migrations
                         .WithMany("Education")
                         .HasForeignKey("IdInstitutionType")
                         .HasConstraintName("fk_education_institution_type1");
+
+                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdStudentInfoNavigation")
+                        .WithMany("Education")
+                        .HasForeignKey("IdStudentInfo")
+                        .HasConstraintName("fk_education_student_info1");
                 });
 
             modelBuilder.Entity("StudCabinetREST.Models.Exam", b =>
                 {
-                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Exams")
-                        .HasForeignKey("IdApplicationMainInfo")
-                        .HasConstraintName("fk_exam_application_main_info1");
+                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdStudentInfoNavigation")
+                        .WithMany("Exam")
+                        .HasForeignKey("IdStudentInfo")
+                        .HasConstraintName("fk_exam_student_info1");
 
                     b.HasOne("StudCabinetREST.Models.Object", "Object")
                         .WithMany("Exam")
@@ -510,18 +527,18 @@ namespace StudCabinetREST.Migrations
 
             modelBuilder.Entity("StudCabinetREST.Models.Privilege", b =>
                 {
-                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Privileges")
-                        .HasForeignKey("IdApplicationMainInfo")
-                        .HasConstraintName("fk_privilege_application_main_info1");
+                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdStudentInfoNavigation")
+                        .WithMany("Privilege")
+                        .HasForeignKey("IdStudentInfo")
+                        .HasConstraintName("fk_privilege_student_info1");
                 });
 
             modelBuilder.Entity("StudCabinetREST.Models.Reward", b =>
                 {
-                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdApplicationMainInfoNavigation")
-                        .WithMany("Rewards")
-                        .HasForeignKey("IdApplicationMainInfo")
-                        .HasConstraintName("fk_reward_application_main_info1");
+                    b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdStudentInfoNavigation")
+                        .WithMany("Reward")
+                        .HasForeignKey("IdStudentInfo")
+                        .HasConstraintName("fk_reward_student_info1");
                 });
 #pragma warning restore 612, 618
         }

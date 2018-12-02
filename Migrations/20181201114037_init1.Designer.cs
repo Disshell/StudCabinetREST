@@ -10,8 +10,8 @@ using StudCabinetREST.Models;
 namespace StudCabinetREST.Migrations
 {
     [DbContext(typeof(StudDBContext))]
-    [Migration("20181130023128_init")]
-    partial class init
+    [Migration("20181201114037_init1")]
+    partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -258,11 +258,6 @@ namespace StudCabinetREST.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Examcol")
-                        .HasColumnName("examcol")
-                        .HasMaxLength(45)
-                        .IsUnicode(false);
-
                     b.Property<int>("IdStudentInfo")
                         .HasColumnName("id_student_info")
                         .HasColumnType("int");
@@ -372,11 +367,11 @@ namespace StudCabinetREST.Migrations
                     b.ToTable("passport","dbstud");
                 });
 
-            modelBuilder.Entity("StudCabinetREST.Models.Privileges", b =>
+            modelBuilder.Entity("StudCabinetREST.Models.Privilege", b =>
                 {
-                    b.Property<int>("IdPrivileges")
+                    b.Property<int>("IdPrivilege")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id_privileges")
+                        .HasColumnName("id_privilege")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -389,12 +384,12 @@ namespace StudCabinetREST.Migrations
                         .HasMaxLength(45)
                         .IsUnicode(false);
 
-                    b.HasKey("IdPrivileges");
+                    b.HasKey("IdPrivilege");
 
                     b.HasIndex("IdStudentInfo")
-                        .HasName("fk_privileges_student_info1_idx");
+                        .HasName("fk_privilege_student_info1_idx");
 
-                    b.ToTable("privileges","dbstud");
+                    b.ToTable("privilege","dbstud");
                 });
 
             modelBuilder.Entity("StudCabinetREST.Models.Reward", b =>
@@ -525,12 +520,12 @@ namespace StudCabinetREST.Migrations
                         .HasConstraintName("fk_exam_object1");
                 });
 
-            modelBuilder.Entity("StudCabinetREST.Models.Privileges", b =>
+            modelBuilder.Entity("StudCabinetREST.Models.Privilege", b =>
                 {
                     b.HasOne("StudCabinetREST.Models.ApplicationMainInfo", "IdStudentInfoNavigation")
-                        .WithMany("Privileges")
+                        .WithMany("Privilege")
                         .HasForeignKey("IdStudentInfo")
-                        .HasConstraintName("fk_privileges_student_info1");
+                        .HasConstraintName("fk_privilege_student_info1");
                 });
 
             modelBuilder.Entity("StudCabinetREST.Models.Reward", b =>

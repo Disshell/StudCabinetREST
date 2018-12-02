@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace StudCabinetREST.Models
 {
-    public class Reward
+    public class Privilege
     {
-        public int IdAward { get; set; }
+        public int IdPrivilege { get; set; }
         public int IdApplicationMainInfo { get; set; }
         public string Name { get; set; }
 

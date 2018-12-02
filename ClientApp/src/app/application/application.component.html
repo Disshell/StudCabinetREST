@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="onSubmit()">
   <h2>Персональная информация</h2>
   <div class="container">
     <div class="row">
@@ -129,5 +129,5 @@
   <app-exam></app-exam>
   <h3>Направления</h3>
   <app-direction></app-direction>
-  <button type="button" class="btn btn-primary">Отправить</button>
+  <button type="submit" class="btn btn-primary">Отправить</button>
 </form>

@@ -1,3 +1,4 @@
+import { InfoService } from './../services/info.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private infoService: InfoService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    this.infoService.GetDierection()
+    .subscribe(res => console.log(res));
   }
 
 }

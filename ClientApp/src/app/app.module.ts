@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApplicationComponent } from './application/application.component';
 import { ExamComponent } from './application/exam/exam.component';
 import { DirectionComponent } from './application/direction/direction.component';
+import { InfoService } from './services/info.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { DirectionComponent } from './application/direction/direction.component'
       { path: 'application', component: ApplicationComponent}
     ])
   ],
-  providers: [],
+  providers: [InfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

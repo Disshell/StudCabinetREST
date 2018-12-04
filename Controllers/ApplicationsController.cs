@@ -21,7 +21,7 @@ namespace StudCabinetREST.Controllers
         }
         [HttpGet("/api/applications")]
         public async Task<IEnumerable<ObjectResource>> GetApplications(){
-            var status = await context.Object.Where(o => o.ObjectId == 1).ToListAsync();
+            var status = await context.Object.ToListAsync();
 
             return mapper.Map<List<Object>, List<ObjectResource>>(status);
         }

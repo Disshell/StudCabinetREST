@@ -5,10 +5,10 @@ namespace StudCabinetREST.Models
 {
     public class Privilege
     {
-        public int IdPrivilege { get; set; }
-        public int IdApplicationMainInfo { get; set; }
+        public int PrivilegeId { get; set; }
+        public int ApplicationMainInfoId { get; set; }
         public string Name { get; set; }
 
-        public ApplicationMainInfo IdApplicationMainInfoNavigation { get; set; }
+        public ApplicationMainInfo ApplicationMainInfo { get; set; }
     }
 }

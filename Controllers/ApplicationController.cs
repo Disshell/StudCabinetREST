@@ -20,10 +20,10 @@ namespace StudCabinetREST.Controllers
             this.mapper = mapper;
         }
         [HttpGet("/api/applications")]
-        public async Task<IEnumerable<StatusResource>> GetApplications(){
-            var status = await context.Status.Where(s => s.IdStatus == 1).ToListAsync();
+        public async Task<IEnumerable<ObjectResource>> GetApplications(){
+            var status = await context.Object.Where(o => o.ObjectId == 1).ToListAsync();
 
-            return mapper.Map<List<Status>, List<StatusResource>>(status);
+            return mapper.Map<List<Object>, List<ObjectResource>>(status);
         }
     }
 }

@@ -14,9 +14,8 @@ namespace StudCabinetREST.Models
             Rewards = new HashSet<Reward>();
         }
 
-        public int IdApplicationMainInfo { get; set; }
-        public int IdPassport { get; set; }
-        public int StatusIdStatus { get; set; }
+        public int ApplicationMainInfoId { get; set; }
+        public int PassportId { get; set; }
         public string Citizenship { get; set; }
         public string Name { get; set; }
         public string Surename { get; set; }
@@ -31,10 +30,11 @@ namespace StudCabinetREST.Models
         public string AddressFact { get; set; }
         public bool NeedOfHostel { get; set; }
         public string Language { get; set; }
+        public string Status {get; set;}
         public DateTime? DateOfApplication { get; set; }
 
-        public Passport IdPassportNavigation { get; set; }
-        public Status StatusIdStatusNavigation { get; set; }
+        public Passport Passport { get; set; }
+        public Military Military {get; set;}
         public ICollection<Application> Applications { get; set; }
         public ICollection<Education> Educations { get; set; }
         public ICollection<Exam> Exams { get; set; }

@@ -8,7 +8,7 @@ namespace StudCabinetREST.Mapping
     {
         public MappingProfile ()
         {
-            CreateMap<Status, StatusResource>();
+            CreateMap<Object, ObjectResource>();
         }
     }
 }

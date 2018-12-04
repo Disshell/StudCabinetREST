@@ -5,13 +5,13 @@ namespace StudCabinetREST.Models
 {
     public class Exam
     {
-        public int IdExams { get; set; }
-        public int IdApplicationMainInfo { get; set; }
+        public int ExamId { get; set; }
+        public int ApplicationMainInfoId { get; set; }
         public int ObjectId { get; set; }
 
         public int? Point { get; set; }
 
-        public ApplicationMainInfo IdApplicationMainInfoNavigation { get; set; }
+        public ApplicationMainInfo ApplicationMainInfo { get; set; }
         public Object Object { get; set; }
     }
 }

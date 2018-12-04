@@ -10,7 +10,7 @@ namespace StudCabinetREST.Models
             Application = new HashSet<Application>();
         }
 
-        public int IdSpecialization { get; set; }
+        public int SpecializationId { get; set; }
         public string Name { get; set; }
 
         public ICollection<Application> Application { get; set; }

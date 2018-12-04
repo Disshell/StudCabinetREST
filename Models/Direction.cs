@@ -10,7 +10,7 @@ namespace StudCabinetREST.Models
             Application = new HashSet<Application>();
         }
 
-        public int IdDirection { get; set; }
+        public int DirectionId { get; set; }
         public string Name { get; set; }
         
         public ICollection<Application> Application { get; set; }

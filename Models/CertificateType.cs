@@ -10,7 +10,7 @@ namespace StudCabinetREST.Models
             Education = new HashSet<Education>();
         }
 
-        public int IdCertificateType { get; set; }
+        public int CertificateTypeId { get; set; }
         public string Name { get; set; }
 
         public ICollection<Education> Education { get; set; }

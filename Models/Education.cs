@@ -5,15 +5,15 @@ namespace StudCabinetREST.Models
 {
     public class Education
     {
-        public int IdEducation { get; set; }
-        public int IdApplicationMainInfo { get; set; }
-        public int IdInstitutionType { get; set; }
-        public int IdCertificateType { get; set; }
+        public int EducationId { get; set; }
+        public int ApplicationMainInfoId { get; set; }
+        public int InstitutionTypeId { get; set; }
+        public int CertificateTypeId { get; set; }
         public string InstitutionName { get; set; }
         public int? Point { get; set; }
 
-        public CertificateType IdCertificateTypeNavigation { get; set; }
-        public InstitutionType IdInstitutionTypeNavigation { get; set; }
-        public ApplicationMainInfo IdApplicationMainInfoNavigation { get; set; }
+        public CertificateType CertificateType { get; set; }
+        public InstitutionType InstitutionType { get; set; }
+        public ApplicationMainInfo ApplicationMainInfo { get; set; }
     }
 }

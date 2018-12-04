@@ -13,6 +13,7 @@ import { ApplicationComponent } from './application/application.component';
 import { ExamComponent } from './application/exam/exam.component';
 import { DirectionComponent } from './application/direction/direction.component';
 import { InfoService } from './services/info.service';
+import { EducationComponent } from './application/education/education.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InfoService } from './services/info.service';
     FetchDataComponent,
     ApplicationComponent,
     ExamComponent,
-    DirectionComponent
+    DirectionComponent,
+    EducationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

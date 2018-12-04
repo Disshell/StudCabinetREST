@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace StudCabinetREST.Controllers
 {
+    [Route("/api/applications")]
     public class ApplicationController: Controller
     {
         private readonly StudDBContext context;
@@ -19,11 +20,16 @@ namespace StudCabinetREST.Controllers
             this.context = context;
             this.mapper = mapper;
         }
-        [HttpGet("/api/applications")]
+        [HttpGet()]
         public async Task<IEnumerable<ObjectResource>> GetApplications(){
             var status = await context.Object.ToListAsync();
 
             return mapper.Map<List<Object>, List<ObjectResource>>(status);
+        }
+
+        [HttpPost()]
+        public IActionResult CreateApplication(Application application){
+            return Ok(application);
         }
     }
 }

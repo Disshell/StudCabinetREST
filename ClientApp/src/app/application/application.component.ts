@@ -71,7 +71,6 @@ export class ApplicationComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    //console.log(this.applicationForm.get('educations').get('0'));
   }
 
 

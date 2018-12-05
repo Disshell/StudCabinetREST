@@ -9,6 +9,11 @@ namespace StudCabinetREST.Mapping
         public MappingProfile ()
         {
             CreateMap<Object, ObjectResource>();
+            CreateMap<CertificateType, CertificateTypeResource>();
+            CreateMap<InstitutionType, InstitutionTypeResource>();
+            CreateMap<Direction, DirectionResource>();
+            CreateMap<Specialization, SpecializationResource>();
+            CreateMap<Faculty, FacultyResources>();
         }
     }
 }

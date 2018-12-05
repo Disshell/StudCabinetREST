@@ -1,38 +1,19 @@
-<div class='main-nav'>
-    <div class='navbar navbar-inverse'>
-        <div class='navbar-header'>
-            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
-                <span class='sr-only'>Toggle navigation</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
-            <a class='navbar-brand' [routerLink]='["/"]'>StudCabinetREST</a>
-        </div>
-        <div class='clearfix'></div>
-        <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-            <ul class='nav navbar-nav'>
-                <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                    <a [routerLink]='["/"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
-                </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/counter"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-education'></span> Counter
-                    </a>
-                </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
-                    </a>
-                </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/application"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-th-list'></span> Подать заявку
-                    </a>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class='navbar-brand' [routerLink]='["/"]'>Кабинет ЯГТУ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li>
+                <a class="nav-item nav-link" [routerLink]='["/application"]' (click)='collapse()'>Подать заявку</a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" [routerLinkActive]='["link-active"]' [routerLink]='["/counter"]' (click)='collapse()'>Counter</a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" [routerLink]='["/fetch-data"]' (click)='collapse()'>Fetch data</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>

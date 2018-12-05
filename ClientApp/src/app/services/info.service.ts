@@ -11,4 +11,12 @@ export class InfoService {
     return this.http.get('/api/applications');
   }
 
+  GetEducationType(){
+    return this.http.get('/api/info')
+  }
+
+  GetObjects(){
+    return this.http.get('/api/info/objects')
+  }
+
 }

@@ -8,11 +8,23 @@ export class InfoService {
   constructor(private http: HttpClient) { }
   
   GetDierection(){
-    return this.http.get('/api/applications');
+    return this.http.get('/api/info/directions');
   }
 
-  GetEducationType(){
-    return this.http.get('/api/info')
+  GetСertificatetypes(){
+    return this.http.get('/api/info/certificatetypes')
+  }
+
+  GetInstitutiontypes(){
+    return this.http.get('/api/info/institutiontypes')
+  }
+
+  GetFaculties(){
+    return this.http.get('/api/info/faculties')
+  }
+
+  GetSpecializations(){
+    return this.http.get('/api/info/specializations')
   }
 
   GetObjects(){

@@ -70,12 +70,37 @@ export class ApplicationComponent implements OnInit {
 
   constructor(private infoService: InfoService) { }
 
+  objects;
+  certificatetypes;
+  institutiontypes;
+  faculties;
+  directions;
+  specializations; 
+
   ngOnInit() {
+    this.infoService.GetObjects()
+    .subscribe(res => this.objects = res);
+
+    this.certificatetypes = this.infoService.GetСertificatetypes()
+    .subscribe( res => this.certificatetypes = res);
+
+    this.institutiontypes = this.infoService.GetInstitutiontypes()
+    .subscribe( res => this.institutiontypes = res);
+
+    this.faculties = this.infoService.GetFaculties()
+    .subscribe(res => this.faculties = res);
+
+    this.directions = this.infoService.GetDierection()
+    .subscribe(res => this.directions = res);
+    
+    this.specializations = this.infoService.GetSpecializations()
+    .subscribe(res => this.specializations = res); 
   }
 
 
   onSubmit(){
     console.log(this.applicationForm);
+    console.log(this.directions);
   }
 
   onAddEducation(){

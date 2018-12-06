@@ -14,6 +14,7 @@ import { ExamComponent } from './application/exam/exam.component';
 import { DirectionComponent } from './application/direction/direction.component';
 import { InfoService } from './services/info.service';
 import { EducationComponent } from './application/education/education.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EducationComponent } from './application/education/education.component'
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ReactiveFormsModule,
+    CommonModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },

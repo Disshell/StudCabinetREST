@@ -18,7 +18,7 @@ export class EducationComponent implements OnInit {
   }
 
   onClick(){
-    console.log(this.listOfCertificateTypes[1]);
+    console.log(this.listOfCertificateTypes)
   }
 
 }

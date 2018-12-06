@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { InfoService } from './../services/info.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
@@ -36,7 +37,7 @@ export class ApplicationComponent implements OnInit {
     ]),
     'exams' : new FormArray([
       new FormGroup({
-        'object': new FormControl('', Validators.required),
+        'objectId': new FormControl('', Validators.required),
         'point': new FormControl('', Validators.required)
       })
     ]),
@@ -51,7 +52,8 @@ export class ApplicationComponent implements OnInit {
       new FormGroup({
         'educationType': new FormControl('', Validators.required),
         'certificateType': new FormControl('', Validators.required),
-        'educationName': new FormControl('', Validators.required)
+        'educationName': new FormControl('', Validators.required),
+        'avgPoint': new FormControl('', Validators.required)
       })
     ]),
     'privileges': new FormArray([
@@ -99,19 +101,26 @@ export class ApplicationComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.certificateTypes)
     console.log(this.applicationForm);
   }
 
   onAddEducation(){
-    console.log("click")
     let ed = new FormGroup({
       'educationType': new FormControl('', Validators.required),
       'certificateType': new FormControl('', Validators.required),
-      'educationName': new FormControl('', Validators.required)
+      'educationName': new FormControl('', Validators.required),
+      'avgPoint': new FormControl('', Validators.required)
     })
     ed.setParent(this.applicationForm);
     (this.applicationForm.controls['educations'] as FormArray).push(ed);
   }
 
+  onAddExam(){
+    let ex = new FormGroup({
+      'objectId': new FormControl('', Validators.required),
+      'point': new FormControl('', Validators.required)
+    });
+    // ex.setParent(this.applicationForm);
+    (this.applicationForm.controls['exams'] as FormArray).push(ex);
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-exam',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit {
-
+  @Input() parentForm: FormGroup;
+  @Input() formGroupIndex: number;
+  @Input() listOfObjects;
   constructor() { }
 
   ngOnInit() {
+    this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
   }
 
 }

@@ -1,3 +1,30 @@
-<p>
-  exam works!
-</p>
+<div [formGroup]="parentForm">
+  <div class="form-row">
+    <div class="col-md-8">
+        <div class="form-group">
+          <label for="objectId">Предмет</label>
+          <select class="form-control" formControlName="objectId" id="objectId">
+            <option
+            *ngFor= "let item of this.listOfObjects; let i=index"
+            [value]="item.objectId"
+            >
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="point">Балл</label>
+        <input 
+          type="text"
+          class="form-control"
+          id="point"
+          placeholder="Название"
+          formControlName="point"
+          >
+        </div>
+    </div>
+  </div>
+</div>
+<hr>

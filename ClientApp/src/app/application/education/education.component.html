@@ -1,21 +1,25 @@
-<div class="well" [formGroup]="parentForm">
+<div  [formGroup]="parentForm">
   <div class="form-row">
-    <div class="col">
+    <div class="col-md">
       <div class="form-group">
         <label for="educationType">Тип образовательного учреждения</label>
         <select class="form-control" formControlName="educationType" id="educationType">
-          <option>Тип 1</option>
-          <option>Тип 2</option>
+            <option
+            *ngFor= "let item of this.listOfInstitutionTypes; let i=index"
+            [value]="item.institutionTypeId"
+           >
+             {{item.name}}
+           </option>
         </select>
       </div>
     </div>
-    <div class="col">
+    <div class="col-md">
       <div class="form-group">
         <label for="certificateType">Тип документа об образовании</label>
         <select class="form-control" formControlName="certificateType" id="certificateType">
           <option
            *ngFor= "let item of this.listOfCertificateTypes; let i=index"
-           [value]="item.idCertificateType"
+           [value]="item.certificateTypeId"
           >
             {{item.name}}
           </option>
@@ -25,7 +29,7 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="col">
+    <div class="col-md-9">
       <div class="form-group">
         <label for="educationName">Название образовательного учреждения</label>
         <input 
@@ -34,8 +38,21 @@
           id="educationName"
           placeholder="Название"
           formControlName="educationName"
-          >
+        >
       </div>
     </div>
+    <div class="col-md-3">
+        <div class="form-group">
+          <label for="avgPoint">Средний балл</label>
+          <input 
+            type="text"
+            class="form-control"
+            id="avgPoint"
+            placeholder="балл"
+            formControlName="avgPoint"
+          >
+        </div>
+      </div>
   </div>
 </div>
+<hr>

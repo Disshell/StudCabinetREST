@@ -137,23 +137,35 @@
         [listOfCertificateTypes] = "certificateTypes"
       >
       </app-education>
-      <hr>
     </div>
     <div class="card-footer">
       <button (click)='onAddEducation()' type="button" class="btn btn-primary ">Добавить</button>
     </div>
   </div>
   <div class="card mt-2">
-      <div class="card-header">Результаты экзаменов</div>
-      <div class="card-body">
-        <app-exam></app-exam>
-      </div>
+    <div class="card-header">Результаты экзаменов</div>
+    <div class="card-body">
+      <app-exam
+      *ngFor="let item of applicationForm.controls['exams'].controls; let i = index"
+      [parentForm]="applicationForm.get('exams')"
+      [formGroupIndex] = "i"
+      [listOfObjects]= "objects"
+      ></app-exam>
+    </div>
+    <div class="card-footer">
+        <button (click)='onAddExam()' type="button" class="btn btn-primary ">Добавить</button>
+    </div>
   </div>
   <div class="card mt-2">
       <div class="card-header">Направления</div>
       <div class="card-body">
         <app-direction></app-direction>
       </div>
+      <div class="card-fotter"></div>
   </div>
   <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
+
+<pre>
+  {{applicationForm.value | json}}
+</pre>

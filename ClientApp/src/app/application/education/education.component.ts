@@ -9,11 +9,16 @@ import { Component, OnInit, Input} from '@angular/core';
 export class EducationComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() formGroupIndex: number;
+  @Input() listOfInstitutionTypes;
+  @Input() listOfCertificateTypes;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.parentForm.controls[3])
     this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
+  }
+
+  onClick(){
+    console.log(this.listOfCertificateTypes[1]);
   }
 
 }

@@ -13,10 +13,15 @@
       <div class="form-group">
         <label for="certificateType">Тип документа об образовании</label>
         <select class="form-control" formControlName="certificateType" id="certificateType">
-          <option>Тип 1</option>
-          <option>Тип 2</option>
+          <option
+           *ngFor= "let item of this.listOfCertificateTypes; let i=index"
+           [value]="item.idCertificateType"
+          >
+            {{item.name}}
+          </option>
         </select>
       </div>
+      <button type="button" (click)="onClick()"></button>
     </div>
   </div>
   <div class="form-row">

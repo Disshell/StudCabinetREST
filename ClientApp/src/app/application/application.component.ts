@@ -71,8 +71,8 @@ export class ApplicationComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   objects;
-  certificatetypes;
-  institutiontypes;
+  certificateTypes;
+  institutionTypes;
   faculties;
   directions;
   specializations; 
@@ -81,11 +81,11 @@ export class ApplicationComponent implements OnInit {
     this.infoService.GetObjects()
     .subscribe(res => this.objects = res);
 
-    this.certificatetypes = this.infoService.GetСertificatetypes()
-    .subscribe( res => this.certificatetypes = res);
+    this.certificateTypes = this.infoService.GetСertificatetypes()
+    .subscribe( res => this.certificateTypes = res);
 
-    this.institutiontypes = this.infoService.GetInstitutiontypes()
-    .subscribe( res => this.institutiontypes = res);
+    this.institutionTypes = this.infoService.GetInstitutiontypes()
+    .subscribe( res => this.institutionTypes = res);
 
     this.faculties = this.infoService.GetFaculties()
     .subscribe(res => this.faculties = res);
@@ -99,8 +99,8 @@ export class ApplicationComponent implements OnInit {
 
 
   onSubmit(){
+    console.log(this.certificateTypes)
     console.log(this.applicationForm);
-    console.log(this.directions);
   }
 
   onAddEducation(){

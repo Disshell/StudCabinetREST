@@ -133,6 +133,8 @@
         *ngFor="let item of applicationForm.controls['educations'].controls; let i = index"
         [parentForm]="applicationForm.get('educations')"
         [formGroupIndex] = "i"
+        [listOfInstitutionTypes]= "institutionTypes"
+        [listOfCertificateTypes] = "certificateTypes"
       >
       </app-education>
       <hr>

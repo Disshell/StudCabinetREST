@@ -31,8 +31,8 @@ export class ApplicationComponent implements OnInit {
     'factAddress': new FormControl('', Validators.required),
     'directions' : new FormArray([
        new FormGroup({
-          "faculty": new FormControl('', Validators.required),
-          "direction": new FormControl('', Validators.required),
+          "facultyId": new FormControl('', Validators.required),
+          "directionId": new FormControl('', Validators.required),
       })
     ]),
     'exams' : new FormArray([
@@ -50,8 +50,8 @@ export class ApplicationComponent implements OnInit {
     ]),
     'educations': new FormArray([
       new FormGroup({
-        'educationType': new FormControl('', Validators.required),
-        'certificateType': new FormControl('', Validators.required),
+        'institutionTypeId': new FormControl('', Validators.required),
+        'certificateTypeId': new FormControl('', Validators.required),
         'educationName': new FormControl('', Validators.required),
         'avgPoint': new FormControl('', Validators.required)
       })
@@ -106,12 +106,12 @@ export class ApplicationComponent implements OnInit {
 
   onAddEducation(){
     let ed = new FormGroup({
-      'educationType': new FormControl('', Validators.required),
-      'certificateType': new FormControl('', Validators.required),
+      'institutionTypeId': new FormControl('', Validators.required),
+      'certificateTypeId': new FormControl('', Validators.required),
       'educationName': new FormControl('', Validators.required),
       'avgPoint': new FormControl('', Validators.required)
-    })
-    ed.setParent(this.applicationForm);
+    });
+    //ed.setParent(this.applicationForm);
     (this.applicationForm.controls['educations'] as FormArray).push(ed);
   }
 
@@ -122,5 +122,14 @@ export class ApplicationComponent implements OnInit {
     });
     // ex.setParent(this.applicationForm);
     (this.applicationForm.controls['exams'] as FormArray).push(ex);
+  }
+
+  onAddDirection(){
+    let dir = new FormGroup({
+      "facultyId": new FormControl('', Validators.required),
+      "directionId": new FormControl('', Validators.required),
+    });
+    // ex.setParent(this.applicationForm);
+    (this.applicationForm.controls['directions'] as FormArray).push(dir);
   }
 }

@@ -2,8 +2,8 @@
   <div class="form-row">
     <div class="col-md">
       <div class="form-group">
-        <label for="educationType">Тип образовательного учреждения</label>
-        <select class="form-control" formControlName="educationType" id="educationType">
+        <label for="institutionTypeId">Тип образовательного учреждения</label>
+        <select class="form-control" formControlName="institutionTypeId" id="institutionTypeId">
             <option
             *ngFor= "let item of this.listOfInstitutionTypes; let i=index"
             [value]="item.institutionTypeId"
@@ -15,8 +15,8 @@
     </div>
     <div class="col-md">
       <div class="form-group">
-        <label for="certificateType">Тип документа об образовании</label>
-        <select class="form-control" formControlName="certificateType" id="certificateType">
+        <label for="certificateTypeId">Тип документа об образовании</label>
+        <select class="form-control" formControlName="certificateTypeId" id="certificateTypeId">
           <option
            *ngFor= "let item of this.listOfCertificateTypes; let i=index"
            [value]="item.certificateTypeId"
@@ -25,7 +25,6 @@
           </option>
         </select>
       </div>
-      <button type="button" (click)="onClick()"></button>
     </div>
   </div>
   <div class="form-row">

@@ -159,9 +159,19 @@
   <div class="card mt-2">
       <div class="card-header">Направления</div>
       <div class="card-body">
-        <app-direction></app-direction>
+        <app-direction
+          *ngFor="let item of applicationForm.controls['directions'].controls; let i = index"
+          [parentForm]="applicationForm.get('directions')"
+          [formGroupIndex] = "i"
+          [listOfFaculties]= "faculties"
+          [listOfDirections] = "directions"
+        >
+
+        </app-direction>
       </div>
-      <div class="card-fotter"></div>
+      <div class="card-footer">
+          <button (click)='onAddDirection()' type="button" class="btn btn-primary ">Добавить</button>
+      </div>
   </div>
   <button type="submit" class="btn btn-primary">Отправить</button>
 </form>

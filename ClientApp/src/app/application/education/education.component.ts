@@ -17,8 +17,4 @@ export class EducationComponent implements OnInit {
     this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
   }
 
-  onClick(){
-    console.log(this.listOfCertificateTypes)
-  }
-
 }

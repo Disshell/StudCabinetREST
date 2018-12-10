@@ -28,7 +28,11 @@ namespace StudCabinetREST.Controllers
         }
 
         [HttpPost()]
-        public IActionResult CreateApplication([FromBody]ApplicationMainInfo application){
+        public IActionResult CreateApplication([FromBody]ApplicationMainInfoResource applicationResource){
+
+            var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationResource);
+            context.ApplicationMainInfo.Add(application);
+            context.SaveChanges();
             return Ok(application);
         }
     }

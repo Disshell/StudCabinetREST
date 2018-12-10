@@ -2,8 +2,8 @@
   <div class="form-row">
     <div class="col-md">
       <div class="form-group">
-        <label for="institutionTypeId">Тип образовательного учреждения</label>
-        <select class="form-control" formControlName="institutionTypeId" id="institutionTypeId">
+        <label for="InstitutionTypeId">Тип образовательного учреждения</label>
+        <select class="form-control" formControlName="InstitutionTypeId" id="InstitutionTypeId">
             <option
             *ngFor= "let item of this.listOfInstitutionTypes; let i=index"
             [value]="item.institutionTypeId"
@@ -15,8 +15,8 @@
     </div>
     <div class="col-md">
       <div class="form-group">
-        <label for="certificateTypeId">Тип документа об образовании</label>
-        <select class="form-control" formControlName="certificateTypeId" id="certificateTypeId">
+        <label for="CertificateTypeId">Тип документа об образовании</label>
+        <select class="form-control" formControlName="CertificateTypeId" id="CertificateTypeId">
           <option
            *ngFor= "let item of this.listOfCertificateTypes; let i=index"
            [value]="item.certificateTypeId"
@@ -30,25 +30,25 @@
   <div class="form-row">
     <div class="col-md-9">
       <div class="form-group">
-        <label for="educationName">Название образовательного учреждения</label>
+        <label for="InstitutionName">Название образовательного учреждения</label>
         <input 
           type="text"
           class="form-control"
-          id="educationName"
+          id="InstitutionName"
           placeholder="Название"
-          formControlName="educationName"
+          formControlName="InstitutionName"
         >
       </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">
-          <label for="avgPoint">Средний балл</label>
+          <label for="Point">Средний балл</label>
           <input 
             type="text"
             class="form-control"
-            id="avgPoint"
+            id="Point"
             placeholder="балл"
-            formControlName="avgPoint"
+            formControlName="Point"
           >
         </div>
       </div>

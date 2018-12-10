@@ -2,8 +2,8 @@
   <div class="form-row">
     <div class="col-md-8">
         <div class="form-group">
-          <label for="objectId">Предмет</label>
-          <select class="form-control" formControlName="objectId" id="objectId">
+          <label for="ObjectId">Предмет</label>
+          <select class="form-control" formControlName="ObjectId" id="ObjectId">
             <option
             *ngFor= "let item of this.listOfObjects; let i=index"
             [value]="item.objectId"
@@ -15,13 +15,13 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label for="point">Балл</label>
+        <label for="Point">Балл</label>
         <input 
           type="text"
           class="form-control"
-          id="point"
+          id="Point"
           placeholder="Название"
-          formControlName="point"
+          formControlName="Point"
           >
         </div>
     </div>

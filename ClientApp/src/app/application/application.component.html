@@ -1,32 +1,32 @@
-<form [formGroup] = 'applicationForm' (ngSubmit)="onSubmit()">
+<form [formGroup] = 'ApplicationMainInfo' (ngSubmit)="onSubmit()">
   <div class="card mt-2">
     <div class="card-header">Персональная информация</div>
     <div class="card-body">
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="sureName">Фамилия</label>
-            <input formControlName='sureName' type="text" class="form-control" id="sureName" placeholder="Фамилия">
+            <label for="Surename">Фамилия</label>
+            <input formControlName='Surename' type="text" class="form-control" id="Surename" placeholder="Фамилия">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="firstName">Имя</label>
-            <input formControlName='firstName' type="text" class="form-control" id="firstName" placeholder="Имя">
+            <label for="Name">Имя</label>
+            <input formControlName='Name' type="text" class="form-control" id="Name" placeholder="Имя">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="middleName">Отчество</label>
-            <input formControlName='middleName' type="text" class="form-control" id="middleName" placeholder="Отчество">
+            <label for="MiddleName">Отчество</label>
+            <input formControlName='MiddleName' type="text" class="form-control" id="MiddleName" placeholder="Отчество">
           </div>
         </div>
       </div>
       <div class="form-row">
           <div class="col">
             <div class="form-group">
-                <label for="gender">Пол</label>
-                <select formControlName='gender' class="form-control" id="gender">
+                <label for="Gender">Пол</label>
+                <select formControlName='Gender' class="form-control" id="Gender">
                   <option value="male">Мужской</option>
                   <option value="female">Женский</option>
                 </select>
@@ -34,42 +34,42 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="date-of-birth">Дата рождения</label>
-              <input type="text" class="form-control" id="date-of-birth" placeholder="Дата рождения">
+              <label for="DateOfBirth">Дата рождения</label>
+              <input formControlName="DateOfBirth" type="text" class="form-control" id="DateOfBirth" placeholder="Дата рождения">
             </div>
           </div>
           <div class="col">
               <div class="form-group">
-                <label for="place-of-birth">Место рождения</label>
-                <input type="text" class="form-control" id="place-of-birth" placeholder="Место рождения">
+                <label for="Birthplace">Место рождения</label>
+                <input formControlName="Birthplace" type="text" class="form-control" id="Birthplace" placeholder="Место рождения">
               </div>
           </div>
       </div>
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="citizenship">Гражданство</label>
-            <input  formControlName='citizenship' type="text" class="form-control" id="citizenship" placeholder="Гражданство">
+            <label for="Citizenship">Гражданство</label>
+            <input  formControlName='Citizenship' type="text" class="form-control" id="Citizenship" placeholder="Гражданство">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="phone">Телефон</label>
-            <input formControlName='phone' type="text" class="form-control" id="phone" placeholder="Телефон">
+            <label for="Phone">Телефон</label>
+            <input formControlName='Phone' type="text" class="form-control" id="Phone" placeholder="Телефон">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="homePhone">Домашний телефон</label>
-            <input formControlName='homePhone' type="text" class="form-control" id="homePhone" placeholder="Домашний телефон">
+            <label for="PhoneHome">Домашний телефон</label>
+            <input formControlName='PhoneHome' type="text" class="form-control" id="PhoneHome" placeholder="Домашний телефон">
           </div>
         </div>
       </div>
       <div class="form-row">
         <div class="col">
             <div class="form-group">
-              <label for="email">Email</label>
-              <input formControlName='email' type="email" class="form-control" id="email" placeholder="Email">
+              <label for="Email">Email</label>
+              <input formControlName='Email' type="Email" class="form-control" id="email" placeholder="Email">
             </div>
         </div>
       </div>
@@ -78,32 +78,32 @@
   <div class="card mt-2">
     <div class="card-header">Паспортные данные</div>
     <div class="card-body">
-      <div formGroupName='passport'>
+      <div formGroupName='Passport'>
         <div class="form-row">
           <div class="col">
             <div class="form-group">
-              <label for="passportSeries">Серия</label>
-              <input formControlName='passportSeries'type="text" class="form-control" id="passportSeries" placeholder="Серия">
+              <label for="Series">Серия</label>
+              <input formControlName='Series'type="text" class="form-control" id="Series" placeholder="Серия">
             </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="passportNumber">Номер</label>
-              <input formControlName='passportNumber' type="text" class="form-control" id="passportNumber" placeholder="Номер">
+              <label for="Number">Номер</label>
+              <input formControlName='Number' type="text" class="form-control" id="Number" placeholder="Номер">
             </div>
           </div>
         </div>
         <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <label for="passportDepartment">Кем выдан</label>
-                <input formControlName='passportDepartment' type="text" class="form-control" id="passportDepartment" placeholder="Кем выдан">
+                <label for="Department">Кем выдан</label>
+                <input formControlName='Department' type="text" class="form-control" id="Department" placeholder="Кем выдан">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="passportDate">Дата выдачи</label>
-                <input formControlName='passportDate' type="text" class="form-control" id="passportDate" placeholder="Дата выдачи">
+                <label for="DateOfIssue">Дата выдачи</label>
+                <input formControlName='DateOfIssue' type="text" class="form-control" id="DateOfIssue" placeholder="Дата выдачи">
               </div>
             </div>
         </div>
@@ -111,16 +111,16 @@
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="regAddress">Адрес по прописке</label>
-            <input formControlName='regAddress' type="text" class="form-control" id="regAddress" placeholder="Адрес по прописке">
+            <label for="AddressPasport">Адрес по прописке</label>
+            <input formControlName='AddressPasport' type="text" class="form-control" id="AddressPasport" placeholder="Адрес по прописке">
           </div>
         </div>
       </div>
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="factAddress">Адрес фактического проживания</label>
-            <input formControlName='factAddress' type="text" class="form-control" id="factAddress" placeholder="Адрес фактического проживания">
+            <label for="AddressFact">Адрес фактического проживания</label>
+            <input formControlName='AddressFact' type="text" class="form-control" id="AddressFact" placeholder="Адрес фактического проживания">
           </div>
         </div>
       </div>
@@ -130,8 +130,8 @@
     <div class="card-header">Данные о предыдушем образовании</div>
     <div class="card-body">
       <app-education 
-        *ngFor="let item of applicationForm.controls['educations'].controls; let i = index"
-        [parentForm]="applicationForm.get('educations')"
+        *ngFor="let item of ApplicationMainInfo.controls['Educations'].controls; let i = index"
+        [parentForm]="ApplicationMainInfo.get('Educations')"
         [formGroupIndex] = "i"
         [listOfInstitutionTypes]= "institutionTypes"
         [listOfCertificateTypes] = "certificateTypes"
@@ -146,8 +146,8 @@
     <div class="card-header">Результаты экзаменов</div>
     <div class="card-body">
       <app-exam
-      *ngFor="let item of applicationForm.controls['exams'].controls; let i = index"
-      [parentForm]="applicationForm.get('exams')"
+      *ngFor="let item of ApplicationMainInfo.controls['Exams'].controls; let i = index"
+      [parentForm]="ApplicationMainInfo.get('Exams')"
       [formGroupIndex] = "i"
       [listOfObjects]= "objects"
       ></app-exam>
@@ -160,8 +160,8 @@
       <div class="card-header">Направления</div>
       <div class="card-body">
         <app-direction
-          *ngFor="let item of applicationForm.controls['directions'].controls; let i = index"
-          [parentForm]="applicationForm.get('directions')"
+          *ngFor="let item of ApplicationMainInfo.controls['Applications'].controls; let i = index"
+          [parentForm]="ApplicationMainInfo.get('Applications')"
           [formGroupIndex] = "i"
           [listOfFaculties]= "faculties"
           [listOfDirections] = "directions"
@@ -177,5 +177,5 @@
 </form>
 
 <pre>
-  {{applicationForm.value | json}}
+  {{ApplicationMainInfo.value | json}}
 </pre>

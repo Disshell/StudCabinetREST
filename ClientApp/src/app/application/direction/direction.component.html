@@ -2,8 +2,8 @@
     <div class="form-row">
       <div class="col-md-6">
           <div class="form-group">
-            <label for="facultyId">Факультет</label>
-            <select class="form-control" formControlName="facultyId" id="facultyId">
+            <label for="FacultyId">Факультет</label>
+            <select class="form-control" formControlName="FacultyId" id="FacultyId">
               <option
               *ngFor= "let item of this.listOfFaculties; let i=index"
               [value]="item.facultyId"
@@ -15,8 +15,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="directionId">Направление</label>
-          <select class="form-control" formControlName="directionId" id="directionId">
+          <label for="DirectionId">Направление</label>
+          <select class="form-control" formControlName="DirectionId" id="DirectionId">
             <option
               *ngFor= "let item of this.listOfDirections; let i=index"
               [value]="item.directionId"

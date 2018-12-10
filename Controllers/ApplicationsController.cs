@@ -28,7 +28,7 @@ namespace StudCabinetREST.Controllers
         }
 
         [HttpPost()]
-        public IActionResult CreateApplication(Application application){
+        public IActionResult CreateApplication([FromBody]ApplicationMainInfo application){
             return Ok(application);
         }
     }

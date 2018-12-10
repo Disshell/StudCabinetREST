@@ -15,6 +15,8 @@ import { DirectionComponent } from './application/direction/direction.component'
 import { InfoService } from './services/info.service';
 import { EducationComponent } from './application/education/education.component';
 import { CommonModule } from '@angular/common';
+import { ApplicationService } from './services/application.service';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { CommonModule } from '@angular/common';
     ApplicationComponent,
     ExamComponent,
     DirectionComponent,
-    EducationComponent
+    EducationComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,7 +43,7 @@ import { CommonModule } from '@angular/common';
       { path: 'application', component: ApplicationComponent}
     ])
   ],
-  providers: [InfoService],
+  providers: [InfoService, ApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

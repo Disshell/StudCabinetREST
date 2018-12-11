@@ -33,7 +33,8 @@ namespace StudCabinetREST.Controllers
             var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationResource);
             context.ApplicationMainInfo.Add(application);
             context.SaveChanges();
-            return Ok(application);
+            var result = mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(application);
+            return Ok(result);
         }
     }
 }

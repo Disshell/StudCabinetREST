@@ -10,20 +10,35 @@ namespace StudCabinetREST.Mapping
 
         public MappingProfile ()
         {
-            CreateMap<Object, ObjectResource>();
-            CreateMap<CertificateType, CertificateTypeResource>();
-            CreateMap<InstitutionType, InstitutionTypeResource>();
-            CreateMap<Direction, DirectionResource>();
-            CreateMap<Specialization, SpecializationResource>();
-            CreateMap<Faculty, FacultyResources>();
-            CreateMap<Exam, ExamResource>();
+            CreateMap<Application, ApplicationResource>();
             CreateMap<ApplicationMainInfo, ApplicationMainInfoResource>();
+            CreateMap<CertificateType, CertificateTypeResource>();
+            CreateMap<Direction, DirectionResource>();
+            CreateMap<Education, EducationResource>();
+            CreateMap<Exam, ExamResource>();
+            CreateMap<Faculty, FacultyResources>();
+            CreateMap<InstitutionType, InstitutionTypeResource>();
+            CreateMap<Military, MilitaryResource>();
+            CreateMap<Object, ObjectResource>();
+            CreateMap<Passport, PassportResource>();
+            CreateMap<Privilege, PrivilegeResource>();
+            CreateMap<Reward, RewardResource>();
+            CreateMap<Specialization, SpecializationResource>();
 
+            CreateMap<ApplicationResource, Application>();
             CreateMap<ApplicationMainInfoResource, ApplicationMainInfo>();
-            CreateMap<PassportResource, Passport>();
+            CreateMap<CertificateTypeResource, CertificateType>();
+            CreateMap<DirectionResource, Direction>();
+            CreateMap<EducationResource, Education>();
             CreateMap<ExamResource, Exam>();
-            //.ForMember(x => x.Passport, opt => opt.MapFrom(src => src.Passport));
-
+            CreateMap<FacultyResources, Faculty>();
+            CreateMap<InstitutionTypeResource, InstitutionType>();
+            CreateMap<MilitaryResource, Military>();
+            CreateMap<ObjectResource, Object>();
+            CreateMap<PassportResource, Passport>();
+            CreateMap<PrivilegeResource, Privilege>();
+            CreateMap<RewardResource, Reward>();
+            CreateMap<SpecializationResource, Specialization>();
         }
     }
 }

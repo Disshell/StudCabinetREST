@@ -21,18 +21,18 @@ namespace StudCabinetREST.Controllers
             this.mapper = mapper;
         }
         [HttpGet()]
-        public async Task<IEnumerable<ObjectResource>> GetApplications(){
-            var status = await context.Object.ToListAsync();
+        public async Task<IEnumerable<ApplicationMainInfoResource>> GetApplications(){
+            var applications = await context.ApplicationMainInfo.ToListAsync();
 
-            return mapper.Map<List<Object>, List<ObjectResource>>(status);
+            return mapper.Map<List<ApplicationMainInfo>, List<ApplicationMainInfoResource>>(applications);
         }
 
         [HttpPost()]
-        public IActionResult CreateApplication([FromBody]ApplicationMainInfoResource applicationResource){
+        public async Task<IActionResult> CreateApplication([FromBody]ApplicationMainInfoResource applicationResource){
 
             var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationResource);
             context.ApplicationMainInfo.Add(application);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
             var result = mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(application);
             return Ok(result);
         }

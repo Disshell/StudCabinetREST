@@ -8,7 +8,11 @@ export class ApplicationService {
   constructor(private http: HttpClient) { }
   
   CreateApplication(application){
-    return this.http.post('/api/info/directions', application);
+    return this.http.post('/api/applications', application);
+  }
+
+  GetApplication(){
+    return this.http.get('/api/applications');
   }
 
 }

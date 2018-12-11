@@ -1,0 +1,28 @@
+<div class="card mt-2">
+  <div class="card-header">Список заявок</div>
+  <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Отчество</th>
+            <th scope="col">Перейти к заявке</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of applications; let i = index">
+            <th scope="row">{{item['applicationMainInfoId']}}</th>
+            <td>{{item['name']}}</td>
+            <td>{{item['surename']}}</td>
+            <td>{{item['middleName']}}</td>
+            <td class="justify-content-center">
+              <button class="btn btn-sm ">Перейти</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+<div>
+<button class="btn btn-primary" (click)="onClick()">Вывести заявки</button>

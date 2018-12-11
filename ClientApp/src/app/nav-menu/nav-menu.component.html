@@ -6,13 +6,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li>
+                <a class="nav-item nav-link" [routerLink]='["/registration"]' (click)='collapse()'>Регистрация</a>
+            </li>
+            <li>
                 <a class="nav-item nav-link" [routerLink]='["/application"]' (click)='collapse()'>Подать заявку</a>
             </li>
             <li>
-                <a class="nav-item nav-link" [routerLinkActive]='["link-active"]' [routerLink]='["/counter"]' (click)='collapse()'>Counter</a>
-            </li>
-            <li>
-                <a class="nav-item nav-link" [routerLink]='["/fetch-data"]' (click)='collapse()'>Fetch data</a>
+                <a class="nav-item nav-link" [routerLink]='["/administration"]' (click)='collapse()'>Администрирование</a>
             </li>
         </ul>
     </div>

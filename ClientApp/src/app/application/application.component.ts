@@ -1,3 +1,4 @@
+import { ApplicationService } from './../services/application.service';
 import { map } from 'rxjs/operators';
 import { InfoService } from './../services/info.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 export class ApplicationComponent implements OnInit {
 
   ApplicationMainInfo: FormGroup = new FormGroup({
-    'Name': new FormControl('', Validators.required),
+    'name': new FormControl('', Validators.required),
     'Surename': new FormControl('',Validators.required),
     'MiddleName': new FormControl('', Validators.required),
     'Gender': new FormControl('male', Validators.required),
@@ -45,7 +46,7 @@ export class ApplicationComponent implements OnInit {
     'totalPoint': new FormControl('0'),
     'Rewards': new FormArray([
       new FormGroup({
-        'Name': new FormControl('', Validators.required)
+        'Name': new FormControl('')
       })
     ]),
     'Educations': new FormArray([
@@ -69,7 +70,7 @@ export class ApplicationComponent implements OnInit {
   }
 );
 
-  constructor(private infoService: InfoService) { }
+  constructor(private infoService: InfoService, private applicationService: ApplicationService) { }
 
   objects;
   certificateTypes;
@@ -100,7 +101,10 @@ export class ApplicationComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.ApplicationMainInfo);
+    console.log("click");
+    this.applicationService.CreateApplication(this.ApplicationMainInfo.value).subscribe(
+      res => console.log(res)
+    );
   }
 
   onAddEducation(){
@@ -119,7 +123,6 @@ export class ApplicationComponent implements OnInit {
       'ObjectId': new FormControl('', Validators.required),
       'Point': new FormControl('', Validators.required)
     });
-    // ex.setParent(this.applicationForm);
     (this.ApplicationMainInfo.controls['Exams'] as FormArray).push(ex);
   }
 
@@ -127,8 +130,15 @@ export class ApplicationComponent implements OnInit {
     let dir = new FormGroup({
       "FacultyId": new FormControl('', Validators.required),
       "DirectionId": new FormControl('', Validators.required),
+      "SpecializationId" : new FormControl('')
     });
-    // ex.setParent(this.applicationForm);
     (this.ApplicationMainInfo.controls['Applications'] as FormArray).push(dir);
+  }
+
+  onAddReward(){
+    let dir = new FormGroup({
+      "Name": new FormControl('', Validators.required),
+    });
+    (this.ApplicationMainInfo.controls['Rewards'] as FormArray).push(dir);
   }
 }

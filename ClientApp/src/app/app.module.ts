@@ -16,6 +16,7 @@ import { EducationComponent } from './application/education/education.component'
 import { CommonModule } from '@angular/common';
 import { ApplicationService } from './services/application.service';
 import { RegistrationComponent } from './registration/registration.component';
+import { RewardComponent } from './application/reward/reward.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegistrationComponent } from './registration/registration.component';
     DirectionComponent,
     EducationComponent,
     RegistrationComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    RewardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,0 +1,46 @@
+{
+  "passportId": 0,
+  "citizenship": "safd",
+  "name": "adll",
+  "surename": "asdf",
+  "middleName": "asdfadsf",
+  "dateOfBirth": null,
+  "gender": false,
+  "birthplace": "ярославль",
+  "phone": "adsfasd",
+  "phoneHome": "asdf",
+  "email": "emaildafd",
+  "addressPasport": "asfd",
+  "addressFact": "asdf",
+  "needOfHostel": false,
+  "language": "adfsasdf",
+  "status": null,
+  "dateOfApplication": null,
+  "passport": {
+      "series": "123",
+      "number": "123",
+      "department": "123",
+      "dateOfIssue": "2017-05-05T00:00:00"
+  },
+  "military": null,
+  "applications": [
+  
+  ],
+  "educations": [],
+  "exams": [
+      {
+          "examsId": 0,
+          "objectId": 2,
+          "point": 49,
+          "object": null
+      },
+      {
+          "examsId": 0,
+          "objectId": 3,
+          "point": 49,
+          "object": null
+      }
+  ],
+  "privileges": [],
+  "rewards": []
+}

@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ApplicationService {
@@ -8,7 +7,10 @@ export class ApplicationService {
   constructor(private http: HttpClient) { }
   
   CreateApplication(application){
-    return this.http.post('/api/applications', application);
+    console.log(JSON.stringify(application));
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/JSON');
+    return this.http.post('/api/applications', application, {headers});
   }
 
   GetApplication(){

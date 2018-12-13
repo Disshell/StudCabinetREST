@@ -23,6 +23,8 @@ export class ApplicationComponent implements OnInit {
     'phone': new FormControl('', Validators.required),
     'phoneHome': new FormControl('', Validators.required),
     'email': new FormControl('', [Validators.required, Validators.email]),
+    'needOfHostel': new FormControl('true', Validators.required),
+    'language': new FormControl('true', Validators.required),
     'passport': new FormGroup({
       'series': new FormControl('', Validators.required),
       'number': new FormControl('', Validators.required),
@@ -35,7 +37,7 @@ export class ApplicationComponent implements OnInit {
        new FormGroup({
           "facultyId": new FormControl('', Validators.required),
           "directionId": new FormControl('', Validators.required),
-          "specializationId": new FormControl('0'),
+          "specializationId": new FormControl(''),
       })
     ]),
     'exams' : new FormArray([

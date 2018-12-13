@@ -10,7 +10,7 @@ namespace StudCabinetREST.Models
         public int InstitutionTypeId { get; set; }
         public int CertificateTypeId { get; set; }
         public string InstitutionName { get; set; }
-        public int? Point { get; set; }
+        public float Point { get; set; }
 
         public CertificateType CertificateType { get; set; }
         public InstitutionType InstitutionType { get; set; }

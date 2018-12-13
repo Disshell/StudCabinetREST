@@ -16,7 +16,7 @@ export class ApplicationComponent implements OnInit {
     'name': new FormControl('', Validators.required),
     'surename': new FormControl('',Validators.required),
     'middleName': new FormControl('', Validators.required),
-    'gender': new FormControl('true', Validators.required),
+    'gender': new FormControl('', Validators.required),
     'dateOfBirth': new FormControl('', Validators.required),
     'birthplace': new FormControl('', Validators.required),
     'citizenship': new FormControl('', Validators.required),
@@ -67,7 +67,8 @@ export class ApplicationComponent implements OnInit {
     ]),
     'military': new FormGroup({
       'city': new FormControl('', Validators.required),
-      'name': new FormControl('', Validators.required)
+      'name': new FormControl('', Validators.required),
+      'group': new FormControl('', Validators.required)
     })
   }
 );
@@ -103,9 +104,7 @@ export class ApplicationComponent implements OnInit {
 
 
   onSubmit(){
-    console.log("click");
-    let body = new ApplicationMainInfo
-    body.applicaions = this.applicationMainInfo.controls['applications'].value;
+    console.log(this.applicationMainInfo);
     this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
       res => console.log(res)
     );

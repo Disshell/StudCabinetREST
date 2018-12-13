@@ -3,42 +3,73 @@
     <div class="card-header">Персональная информация</div>
     <div class="card-body">
       <div class="form-row">
-        <div class="col">
+        <div class="col-lg">
           <div class="form-group">
             <label for="surename">Фамилия</label>
-            <input formControlName='surename' type="text" class="form-control" id="surename" placeholder="Фамилия">
+            <input formControlName='surename' type="text" class="form-control " id="surename" placeholder="Фамилия" 
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['surename'].invalid &&
+              (applicationMainInfo.controls['surename'].dirty || applicationMainInfo.controls['surename'].touched) }"
+            >
+            <div class="invalid-feedback">
+              Поле не должно быть пустым
+            </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg">
           <div class="form-group">
             <label for="name">Имя</label>
-            <input formControlName='name' type="text" class="form-control" id="name" placeholder="Имя">
+            <input formControlName='name' type="text" class="form-control" id="name" placeholder="Имя"
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['name'].invalid &&
+              (applicationMainInfo.controls['name'].dirty || applicationMainInfo.controls['name'].touched) }"
+            >
+            <div class="invalid-feedback">
+              Поле не должно быть пустым
+            </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg">
           <div class="form-group">
             <label for="middleName">Отчество</label>
-            <input formControlName='middleName' type="text" class="form-control" id="middleName" placeholder="Отчество">
+            <input formControlName='middleName' type="text" class="form-control" id="middleName" placeholder="Отчество"
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['middleName'].invalid &&
+              (applicationMainInfo.controls['middleName'].dirty || applicationMainInfo.controls['middleName'].touched) }"
+            >
+            <div class="invalid-feedback">
+              Поле не должно быть пустым
+            </div>
           </div>
         </div>
       </div>
       <div class="form-row">
-          <div class="col">
+          <div class="col-lg col-md-6">
             <div class="form-group">
                 <label for="gender">Пол</label>
-                <select formControlName='gender' class="form-control" id="gender">
+                <select formControlName='gender' class="form-control" id="gender"
+                  [ngClass]="{'is-invalid': applicationMainInfo.controls['gender'].invalid &&
+                  (applicationMainInfo.controls['gender'].dirty || applicationMainInfo.controls['gender'].touched) }"
+                >
+                  <option value="">Выберите..</option>
                   <option value="true">Мужской</option>
                   <option value="false">Женский</option>
                 </select>
+                <div class="invalid-feedback">
+                  Поле не должно быть пустым
+                </div>
               </div>
           </div>
-          <div class="col">
+          <div class="col-lg col-md-6">
             <div class="form-group">
               <label for="dateOfBirth">Дата рождения</label>
-              <input formControlName="dateOfBirth" type="text" class="form-control" id="dateOfBirth" placeholder="Дата рождения">
+              <input formControlName="dateOfBirth" type="text" class="form-control" id="dateOfBirth" placeholder="Дата рождения"
+                [ngClass]="{'is-invalid': applicationMainInfo.controls['dateOfBirth'].invalid &&
+                (applicationMainInfo.controls['dateOfBirth'].dirty || applicationMainInfo.controls['dateOfBirth'].touched) }"
+              >
+              <div class="invalid-feedback">
+              Поле не должно быть пустым
+              </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-lg col-md-12">
               <div class="form-group">
                 <label for="birthplace">Место рождения</label>
                 <input formControlName="birthplace" type="text" class="form-control" id="birthplace" placeholder="Место рождения">
@@ -76,11 +107,22 @@
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-              <label for="language">Пол</label>
+              <label for="language">Язык</label>
               <select formControlName='language' class="form-control" id="language">
                 <option value="en">Английский</option>
                 <option value="de">Немецкий</option>
                 <option value="fr">Французский</option>
+              </select>
+            </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+              <label for="needOfHostel">Нужда в общежитии</label>
+              <select formControlName='needOfHostel' class="form-control" id="needOfHostel">
+                <option value="true">Да</option>
+                <option value="false">Нет</option>
               </select>
             </div>
         </div>
@@ -198,6 +240,40 @@
       <div class="card-footer">
           <button (click)='onAddReward()' type="button" class="btn btn-primary ">Добавить</button>
       </div>
+  </div>
+  <div class="card mt-2">
+    <div class="card-header">Воинская обязанность</div>
+    <div class="card-body">
+      <div formGroupName='military'>
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <label for="city">Город</label>
+              <input formControlName='city'type="text" class="form-control" id="city" placeholder="Город">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="group">Группа учета</label>
+              <select formControlName='group' class="form-control" id="group">
+                <option value="А">A</option>
+                <option value="Б">Б</option>
+                <option value="В">В</option>
+                <option value="Г">Г</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <label for="number">Название военкомата</label>
+              <input formControlName='name' type="text" class="form-control" id="name" placeholder="Название военкомата">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary">Отправить</button>
 </form>

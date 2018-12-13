@@ -2,8 +2,8 @@
   <div class="form-row">
     <div class="col-md">
       <div class="form-group">
-        <label for="InstitutionTypeId">Тип образовательного учреждения</label>
-        <select class="form-control" formControlName="InstitutionTypeId" id="InstitutionTypeId">
+        <label for="institutionTypeId">Тип образовательного учреждения</label>
+        <select class="form-control" formControlName="institutionTypeId" id="institutionTypeId">
             <option
             *ngFor= "let item of this.listOfInstitutionTypes; let i=index"
             [value]="item.institutionTypeId"
@@ -15,8 +15,8 @@
     </div>
     <div class="col-md">
       <div class="form-group">
-        <label for="CertificateTypeId">Тип документа об образовании</label>
-        <select class="form-control" formControlName="CertificateTypeId" id="CertificateTypeId">
+        <label for="certificateTypeId">Тип документа об образовании</label>
+        <select class="form-control" formControlName="certificateTypeId" id="certificateTypeId">
           <option
            *ngFor= "let item of this.listOfCertificateTypes; let i=index"
            [value]="item.certificateTypeId"
@@ -30,25 +30,25 @@
   <div class="form-row">
     <div class="col-md-9">
       <div class="form-group">
-        <label for="InstitutionName">Название образовательного учреждения</label>
+        <label for="institutionName">Название образовательного учреждения</label>
         <input 
           type="text"
           class="form-control"
-          id="InstitutionName"
+          id="institutionName"
           placeholder="Название"
-          formControlName="InstitutionName"
+          formControlName="institutionName"
         >
       </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">
-          <label for="Point">Средний балл</label>
+          <label for="point">Средний балл</label>
           <input 
             type="text"
             class="form-control"
-            id="Point"
-            placeholder="балл"
-            formControlName="Point"
+            id="point"
+            placeholder="Балл"
+            formControlName="point"
           >
         </div>
       </div>

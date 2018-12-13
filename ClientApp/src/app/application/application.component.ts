@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { InfoService } from './../services/info.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { ApplicationMainInfo } from '../../../models/ApplicationMainInfo';
 
 @Component({
   selector: 'app-application',
@@ -11,61 +12,60 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 })
 export class ApplicationComponent implements OnInit {
 
-  ApplicationMainInfo: FormGroup = new FormGroup({
+  applicationMainInfo: FormGroup = new FormGroup({
     'name': new FormControl('', Validators.required),
-    'Surename': new FormControl('',Validators.required),
-    'MiddleName': new FormControl('', Validators.required),
-    'Gender': new FormControl('male', Validators.required),
-    'DateOfBirth': new FormControl('', Validators.required),
-    'Birthplace': new FormControl('', Validators.required),
-    'Citizenship': new FormControl('', Validators.required),
-    'Phone': new FormControl('', Validators.required),
-    'PhoneHome': new FormControl('', Validators.required),
-    'Email': new FormControl('', [Validators.required, Validators.email]),
-    'Passport': new FormGroup({
-      'Series': new FormControl('', Validators.required),
-      'Number': new FormControl('', Validators.required),
-      'Department': new FormControl('', Validators.required),
-      'DateOfIssue': new FormControl('', Validators.required)
+    'surename': new FormControl('',Validators.required),
+    'middleName': new FormControl('', Validators.required),
+    'gender': new FormControl('true', Validators.required),
+    'dateOfBirth': new FormControl('', Validators.required),
+    'birthplace': new FormControl('', Validators.required),
+    'citizenship': new FormControl('', Validators.required),
+    'phone': new FormControl('', Validators.required),
+    'phoneHome': new FormControl('', Validators.required),
+    'email': new FormControl('', [Validators.required, Validators.email]),
+    'passport': new FormGroup({
+      'series': new FormControl('', Validators.required),
+      'number': new FormControl('', Validators.required),
+      'department': new FormControl('', Validators.required),
+      'dateOfIssue': new FormControl('', Validators.required)
     }),
-    'AddressPasport': new FormControl('', Validators.required),
-    'AddressFact': new FormControl('', Validators.required),
-    'Applications' : new FormArray([
+    'addressPasport': new FormControl('', Validators.required),
+    'addressFact': new FormControl('', Validators.required),
+    'applications' : new FormArray([
        new FormGroup({
-          "FacultyId": new FormControl('', Validators.required),
-          "DirectionId": new FormControl('', Validators.required),
-          "SpecializationId": new FormControl(''),
+          "facultyId": new FormControl('', Validators.required),
+          "directionId": new FormControl('', Validators.required),
+          "specializationId": new FormControl('0'),
       })
     ]),
-    'Exams' : new FormArray([
+    'exams' : new FormArray([
       new FormGroup({
-        'ObjectId': new FormControl('', Validators.required),
-        'Point': new FormControl('', Validators.required)
+        'objectId': new FormControl('', Validators.required),
+        'point': new FormControl('', Validators.required)
       })
     ]),
     'totalPoint': new FormControl('0'),
-    'Rewards': new FormArray([
+    'rewards': new FormArray([
       new FormGroup({
-        'Name': new FormControl('')
+        'name': new FormControl('')
       })
     ]),
-    'Educations': new FormArray([
+    'educations': new FormArray([
       new FormGroup({
-        'InstitutionTypeId': new FormControl('', Validators.required),
-        'CertificateTypeId': new FormControl('', Validators.required),
-        'InstitutionName': new FormControl('', Validators.required),
-        'Point': new FormControl('', Validators.required)
+        'institutionTypeId': new FormControl('', Validators.required),
+        'certificateTypeId': new FormControl('', Validators.required),
+        'institutionName': new FormControl('', Validators.required),
+        'point': new FormControl('', Validators.required)
       })
     ]),
-    'Privileges': new FormArray([
+    'privileges': new FormArray([
       new FormGroup({
-        'PrivilegeId': new FormControl('', Validators.required),
-        'Name': new FormControl('', Validators.required)
+        'name': new FormControl('', Validators.required)
       })
     ]),
-    'Military': new FormGroup({
-      'City': new FormControl('', Validators.required),
-      'Name': new FormControl('', Validators.required)
+    'military': new FormGroup({
+      'city': new FormControl('', Validators.required),
+      'name': new FormControl('', Validators.required)
     })
   }
 );
@@ -102,43 +102,44 @@ export class ApplicationComponent implements OnInit {
 
   onSubmit(){
     console.log("click");
-    this.applicationService.CreateApplication(this.ApplicationMainInfo.value).subscribe(
+    let body = new ApplicationMainInfo
+    body.applicaions = this.applicationMainInfo.controls['applications'].value;
+    this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
       res => console.log(res)
     );
   }
 
   onAddEducation(){
     let ed = new FormGroup({
-      'InstitutionTypeId': new FormControl('', Validators.required),
-      'CertificateTypeId': new FormControl('', Validators.required),
-      'InstitutionName': new FormControl('', Validators.required),
-      'Point': new FormControl('', Validators.required)
+      'institutionTypeId': new FormControl('', Validators.required),
+      'certificateTypeId': new FormControl('', Validators.required),
+      'institutionName': new FormControl('', Validators.required),
+      'point': new FormControl('', Validators.required)
     });
-    //ed.setParent(this.applicationForm);
-    (this.ApplicationMainInfo.controls['Educations'] as FormArray).push(ed);
+    (this.applicationMainInfo.controls['educations'] as FormArray).push(ed);
   }
 
   onAddExam(){
     let ex = new FormGroup({
-      'ObjectId': new FormControl('', Validators.required),
-      'Point': new FormControl('', Validators.required)
+      'objectId': new FormControl('', Validators.required),
+      'point': new FormControl('', Validators.required)
     });
-    (this.ApplicationMainInfo.controls['Exams'] as FormArray).push(ex);
+    (this.applicationMainInfo.controls['exams'] as FormArray).push(ex);
   }
 
   onAddDirection(){
     let dir = new FormGroup({
-      "FacultyId": new FormControl('', Validators.required),
-      "DirectionId": new FormControl('', Validators.required),
-      "SpecializationId" : new FormControl('')
+      "facultyId": new FormControl('', Validators.required),
+      "directionId": new FormControl('', Validators.required),
+      "specializationId" : new FormControl('')
     });
-    (this.ApplicationMainInfo.controls['Applications'] as FormArray).push(dir);
+    (this.applicationMainInfo.controls['applications'] as FormArray).push(dir);
   }
 
   onAddReward(){
     let dir = new FormGroup({
-      "Name": new FormControl('', Validators.required),
+      "name": new FormControl('', Validators.required),
     });
-    (this.ApplicationMainInfo.controls['Rewards'] as FormArray).push(dir);
+    (this.applicationMainInfo.controls['rewards'] as FormArray).push(dir);
   }
 }

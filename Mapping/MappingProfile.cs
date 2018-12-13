@@ -10,8 +10,8 @@ namespace StudCabinetREST.Mapping
 
         public MappingProfile ()
         {
-            CreateMap<Application, ApplicationResource>();
             CreateMap<ApplicationMainInfo, ApplicationMainInfoResource>();
+            CreateMap<Application, ApplicationResource>();
             CreateMap<CertificateType, CertificateTypeResource>();
             CreateMap<Direction, DirectionResource>();
             CreateMap<Education, EducationResource>();

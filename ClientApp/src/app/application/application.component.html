@@ -1,12 +1,12 @@
-<form [formGroup] = 'ApplicationMainInfo' (ngSubmit)="onSubmit()">
+<form [formGroup] = 'applicationMainInfo' (ngSubmit)="onSubmit()">
   <div class="card mt-2">
     <div class="card-header">Персональная информация</div>
     <div class="card-body">
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="Surename">Фамилия</label>
-            <input formControlName='Surename' type="text" class="form-control" id="Surename" placeholder="Фамилия">
+            <label for="surename">Фамилия</label>
+            <input formControlName='surename' type="text" class="form-control" id="surename" placeholder="Фамилия">
           </div>
         </div>
         <div class="col">
@@ -17,51 +17,51 @@
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="MiddleName">Отчество</label>
-            <input formControlName='MiddleName' type="text" class="form-control" id="MiddleName" placeholder="Отчество">
+            <label for="middleName">Отчество</label>
+            <input formControlName='middleName' type="text" class="form-control" id="middleName" placeholder="Отчество">
           </div>
         </div>
       </div>
       <div class="form-row">
           <div class="col">
             <div class="form-group">
-                <label for="Gender">Пол</label>
-                <select formControlName='Gender' class="form-control" id="Gender">
-                  <option value="male">Мужской</option>
-                  <option value="female">Женский</option>
+                <label for="gender">Пол</label>
+                <select formControlName='gender' class="form-control" id="gender">
+                  <option value="true">Мужской</option>
+                  <option value="false">Женский</option>
                 </select>
               </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="DateOfBirth">Дата рождения</label>
-              <input formControlName="DateOfBirth" type="text" class="form-control" id="DateOfBirth" placeholder="Дата рождения">
+              <label for="dateOfBirth">Дата рождения</label>
+              <input formControlName="dateOfBirth" type="text" class="form-control" id="dateOfBirth" placeholder="Дата рождения">
             </div>
           </div>
           <div class="col">
               <div class="form-group">
-                <label for="Birthplace">Место рождения</label>
-                <input formControlName="Birthplace" type="text" class="form-control" id="Birthplace" placeholder="Место рождения">
+                <label for="birthplace">Место рождения</label>
+                <input formControlName="birthplace" type="text" class="form-control" id="birthplace" placeholder="Место рождения">
               </div>
           </div>
       </div>
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="Citizenship">Гражданство</label>
-            <input  formControlName='Citizenship' type="text" class="form-control" id="Citizenship" placeholder="Гражданство">
+            <label for="citizenship">Гражданство</label>
+            <input  formControlName='citizenship' type="text" class="form-control" id="citizenship" placeholder="Гражданство">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="Phone">Телефон</label>
-            <input formControlName='Phone' type="text" class="form-control" id="Phone" placeholder="Телефон">
+            <input formControlName='phone' type="text" class="form-control" id="phone" placeholder="Телефон">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
-            <label for="PhoneHome">Домашний телефон</label>
-            <input formControlName='PhoneHome' type="text" class="form-control" id="PhoneHome" placeholder="Домашний телефон">
+            <label for="phoneHome">Домашний телефон</label>
+            <input formControlName='phoneHome' type="text" class="form-control" id="phoneHome" placeholder="Домашний телефон">
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
         <div class="col">
             <div class="form-group">
               <label for="Email">Email</label>
-              <input formControlName='Email' type="Email" class="form-control" id="email" placeholder="Email">
+              <input formControlName='email' type="email" class="form-control" id="email" placeholder="Email">
             </div>
         </div>
       </div>
@@ -78,32 +78,32 @@
   <div class="card mt-2">
     <div class="card-header">Паспортные данные</div>
     <div class="card-body">
-      <div formGroupName='Passport'>
+      <div formGroupName='passport'>
         <div class="form-row">
           <div class="col">
             <div class="form-group">
-              <label for="Series">Серия</label>
-              <input formControlName='Series'type="text" class="form-control" id="Series" placeholder="Серия">
+              <label for="series">Серия</label>
+              <input formControlName='series'type="text" class="form-control" id="series" placeholder="Серия">
             </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="Number">Номер</label>
-              <input formControlName='Number' type="text" class="form-control" id="Number" placeholder="Номер">
+              <label for="number">Номер</label>
+              <input formControlName='number' type="text" class="form-control" id="number" placeholder="Номер">
             </div>
           </div>
         </div>
         <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <label for="Department">Кем выдан</label>
-                <input formControlName='Department' type="text" class="form-control" id="Department" placeholder="Кем выдан">
+                <label for="department">Кем выдан</label>
+                <input formControlName='department' type="text" class="form-control" id="department" placeholder="Кем выдан">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="DateOfIssue">Дата выдачи</label>
-                <input formControlName='DateOfIssue' type="text" class="form-control" id="DateOfIssue" placeholder="Дата выдачи">
+                <label for="dateOfIssue">Дата выдачи</label>
+                <input formControlName='dateOfIssue' type="text" class="form-control" id="dateOfIssue" placeholder="Дата выдачи">
               </div>
             </div>
         </div>
@@ -112,15 +112,15 @@
         <div class="col">
           <div class="form-group">
             <label for="AddressPasport">Адрес по прописке</label>
-            <input formControlName='AddressPasport' type="text" class="form-control" id="AddressPasport" placeholder="Адрес по прописке">
+            <input formControlName='addressPasport' type="text" class="form-control" id="addressPasport" placeholder="Адрес по прописке">
           </div>
         </div>
       </div>
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="AddressFact">Адрес фактического проживания</label>
-            <input formControlName='AddressFact' type="text" class="form-control" id="AddressFact" placeholder="Адрес фактического проживания">
+            <label for="addressFact">Адрес фактического проживания</label>
+            <input formControlName='addressFact' type="text" class="form-control" id="addressFact" placeholder="Адрес фактического проживания">
           </div>
         </div>
       </div>
@@ -130,8 +130,8 @@
     <div class="card-header">Данные о предыдушем образовании</div>
     <div class="card-body">
       <app-education 
-        *ngFor="let item of ApplicationMainInfo.controls['Educations'].controls; let i = index"
-        [parentForm]="ApplicationMainInfo.get('Educations')"
+        *ngFor="let item of applicationMainInfo.controls['educations'].controls; let i = index"
+        [parentForm]="applicationMainInfo.get('educations')"
         [formGroupIndex] = "i"
         [listOfInstitutionTypes]= "institutionTypes"
         [listOfCertificateTypes] = "certificateTypes"
@@ -146,8 +146,8 @@
     <div class="card-header">Результаты экзаменов</div>
     <div class="card-body">
       <app-exam
-      *ngFor="let item of ApplicationMainInfo.controls['Exams'].controls; let i = index"
-      [parentForm]="ApplicationMainInfo.get('Exams')"
+      *ngFor="let item of applicationMainInfo.controls['exams'].controls; let i = index"
+      [parentForm]="applicationMainInfo.get('exams')"
       [formGroupIndex] = "i"
       [listOfObjects]= "objects"
       ></app-exam>
@@ -160,8 +160,8 @@
       <div class="card-header">Направления</div>
       <div class="card-body">
         <app-direction
-          *ngFor="let item of ApplicationMainInfo.controls['Applications'].controls; let i = index"
-          [parentForm]="ApplicationMainInfo.get('Applications')"
+          *ngFor="let item of applicationMainInfo.controls['applications'].controls; let i = index"
+          [parentForm]="applicationMainInfo.get('applications')"
           [formGroupIndex] = "i"
           [listOfFaculties]= "faculties"
           [listOfDirections] = "directions"
@@ -177,8 +177,8 @@
       <div class="card-header">Награды</div>
       <div class="card-body">
         <app-reward
-          *ngFor="let item of ApplicationMainInfo.controls['Rewards'].controls; let i = index"
-          [parentForm]="ApplicationMainInfo.get('Rewards')"
+          *ngFor="let item of applicationMainInfo.controls['rewards'].controls; let i = index"
+          [parentForm]="applicationMainInfo.get('rewards')"
           [formGroupIndex] = "i"
         >
         </app-reward>
@@ -191,5 +191,5 @@
 </form>
 
 <pre>
-  {{ApplicationMainInfo.value | json}}
+  {{applicationMainInfo.value | json}}
 </pre>

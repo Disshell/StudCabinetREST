@@ -6,11 +6,10 @@ export class ApplicationService {
 
   constructor(private http: HttpClient) { }
   
-  CreateApplication(application){
-    console.log(JSON.stringify(application));
+  CreateApplication(applicationMainInfo){
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/JSON');
-    return this.http.post('/api/applications', application, {headers});
+    return this.http.post('/api/applications', applicationMainInfo, {headers});
   }
 
   GetApplication(){

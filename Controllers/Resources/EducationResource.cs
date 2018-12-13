@@ -7,9 +7,6 @@ namespace StudCabinetREST.Controllers.Resources
         public int InstitutionTypeId { get; set; }
         public int CertificateTypeId { get; set; }
         public string InstitutionName { get; set; }
-        public int? Point { get; set; }
-
-        public CertificateTypeResource IdCertificateTypeNavigation { get; set; }
-        public InstitutionTypeResource IdInstitutionTypeNavigation { get; set; }
+        public float Point { get; set; }
     }
 }

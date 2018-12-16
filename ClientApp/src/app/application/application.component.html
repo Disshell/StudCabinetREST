@@ -209,7 +209,7 @@
             <div class="form-group">
               <label for="number">Номер</label>
               <input formControlName='number' type="text" class="form-control" id="number" placeholder="Номер"
-              [ngClass]="{'is-invalid': applicationMainInfo.controls['passport'].controls['series'].invalid &&
+                [ngClass]="{'is-invalid': applicationMainInfo.controls['passport'].controls['series'].invalid &&
                 (applicationMainInfo.controls['passport'].controls['series'].dirty || applicationMainInfo.controls['passport'].controls['series'].touched) }"
               >
               <div class="invalid-feedback">
@@ -227,7 +227,13 @@
             <div class="col">
               <div class="form-group">
                 <label for="department">Кем выдан</label>
-                <input formControlName='department' type="text" class="form-control" id="department" placeholder="Кем выдан">
+                <input formControlName='department' type="text" class="form-control" id="department" placeholder="Кем выдан"
+                  [ngClass]="{'is-invalid': applicationMainInfo.controls['passport'].controls['department'].invalid &&
+                  (applicationMainInfo.controls['passport'].controls['department'].dirty || applicationMainInfo.controls['passport'].controls['department'].touched) }"
+                >
+                <div class="invalid-feedback">
+                  Поле не должно быть пустым
+                </div>
               </div>
             </div>
             <div class="col">
@@ -241,7 +247,7 @@
       <div class="form-row">
         <div class="col">
           <div class="form-group">
-            <label for="AddressPasport">Адрес по прописке</label>
+            <label for="addressPasport">Адрес по прописке</label>
             <input formControlName='addressPasport' type="text" class="form-control" id="addressPasport" placeholder="Адрес по прописке">
           </div>
         </div>

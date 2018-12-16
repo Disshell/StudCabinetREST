@@ -48,7 +48,7 @@
                   [ngClass]="{'is-invalid': applicationMainInfo.controls['gender'].invalid &&
                   (applicationMainInfo.controls['gender'].dirty || applicationMainInfo.controls['gender'].touched) }"
                 >
-                  <option value="">Выберите..</option>
+                  <option value="">Выберите...</option>
                   <option value="true">Мужской</option>
                   <option value="false">Женский</option>
                 </select>
@@ -60,7 +60,7 @@
           <div class="col-lg col-md-6">
             <div class="form-group">
               <label for="dateOfBirth">Дата рождения</label>
-              <input formControlName="dateOfBirth" type="text" class="form-control" id="dateOfBirth" placeholder="Дата рождения"
+              <input formControlName="dateOfBirth" type="date" class="form-control" id="dateOfBirth" placeholder="Дата рождения"
                 [ngClass]="{'is-invalid': applicationMainInfo.controls['dateOfBirth'].invalid &&
                 (applicationMainInfo.controls['dateOfBirth'].dirty || applicationMainInfo.controls['dateOfBirth'].touched) }"
               >
@@ -72,27 +72,56 @@
           <div class="col-lg col-md-12">
               <div class="form-group">
                 <label for="birthplace">Место рождения</label>
-                <input formControlName="birthplace" type="text" class="form-control" id="birthplace" placeholder="Место рождения">
+                <input formControlName="birthplace" type="text" class="form-control" id="birthplace" placeholder="Место рождения"
+                  [ngClass]="{'is-invalid': applicationMainInfo.controls['birthplace'].invalid &&
+                  (applicationMainInfo.controls['birthplace'].dirty || applicationMainInfo.controls['birthplace'].touched) }"
+                >
+                <div class="invalid-feedback">
+                  Поле не должно быть пустым
+                </div>
               </div>
           </div>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="col-lg col-md-12">
           <div class="form-group">
             <label for="citizenship">Гражданство</label>
-            <input  formControlName='citizenship' type="text" class="form-control" id="citizenship" placeholder="Гражданство">
+            <input  formControlName='citizenship' type="text" class="form-control" id="citizenship" placeholder="Гражданство"
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['citizenship'].invalid &&
+              (applicationMainInfo.controls['citizenship'].dirty || applicationMainInfo.controls['citizenship'].touched) }"
+            >
+            <div class="invalid-feedback">
+              Поле не должно быть пустым
+            </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg col-md-6">
           <div class="form-group">
             <label for="Phone">Телефон</label>
-            <input formControlName='phone' type="text" class="form-control" id="phone" placeholder="Телефон">
+            <input formControlName='phone' type="text" class="form-control" id="phone" placeholder="+79876543210"
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['phone'].invalid &&
+              (applicationMainInfo.controls['phone'].dirty || applicationMainInfo.controls['phone'].touched) }"
+            >
+            <div class="invalid-feedback">
+              <span *ngIf="applicationMainInfo.controls['phone'].hasError('required')" >
+                Поле не должно быть пустым 
+              </span>
+              <span *ngIf="applicationMainInfo.controls['phone'].hasError('pattern')">
+                Введите телефон в формате +79876543210
+              </span>
+            </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg col-md-6">
           <div class="form-group">
             <label for="phoneHome">Домашний телефон</label>
-            <input formControlName='phoneHome' type="text" class="form-control" id="phoneHome" placeholder="Домашний телефон">
+            <input formControlName='phoneHome' type="text" class="form-control" id="phoneHome" placeholder="Домашний телефон"
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['phoneHome'].invalid &&
+              (applicationMainInfo.controls['phoneHome'].dirty || applicationMainInfo.controls['phoneHome'].touched) }"
+            >
+            <div class="invalid-feedback">
+              Поле не должно быть пустым
+            </div>
           </div>
         </div>
       </div>
@@ -100,7 +129,18 @@
         <div class="col">
             <div class="form-group">
               <label for="Email">Email</label>
-              <input formControlName='email' type="email" class="form-control" id="email" placeholder="Email">
+              <input formControlName='email' type="email" class="form-control" id="email" placeholder="Email"
+                [ngClass]="{'is-invalid': applicationMainInfo.controls['email'].invalid &&
+                (applicationMainInfo.controls['email'].dirty || applicationMainInfo.controls['email'].touched) }"
+              >
+              <div class="invalid-feedback">
+                <span *ngIf="applicationMainInfo.controls['email'].hasError('required')" >
+                  Поле не должно быть пустым 
+                </span>
+                <span *ngIf="applicationMainInfo.controls['email'].hasError('email') && !applicationMainInfo.controls['email'].hasError('required')">
+                  Введите действительный email
+                </span>
+              </div>
             </div>
         </div>
       </div>
@@ -108,11 +148,18 @@
         <div class="col">
           <div class="form-group">
               <label for="language">Язык</label>
-              <select formControlName='language' class="form-control" id="language">
+              <select formControlName='language' class="form-control" id="language"
+                [ngClass]="{'is-invalid': applicationMainInfo.controls['language'].invalid &&
+                (applicationMainInfo.controls['language'].dirty || applicationMainInfo.controls['language'].touched) }"
+              >
+                <option value="">Выберите...</option>
                 <option value="en">Английский</option>
                 <option value="de">Немецкий</option>
                 <option value="fr">Французский</option>
               </select>
+              <div class="invalid-feedback">
+                  Поле не должно быть пустым
+              </div>
             </div>
         </div>
       </div>
@@ -120,10 +167,17 @@
         <div class="col">
           <div class="form-group">
               <label for="needOfHostel">Нужда в общежитии</label>
-              <select formControlName='needOfHostel' class="form-control" id="needOfHostel">
+              <select formControlName='needOfHostel' class="form-control" id="needOfHostel"
+                [ngClass]="{'is-invalid': applicationMainInfo.controls['needOfHostel'].invalid &&
+                (applicationMainInfo.controls['needOfHostel'].dirty || applicationMainInfo.controls['needOfHostel'].touched) }"
+              >
+                <option value="">Выберите...</option>
                 <option value="true">Да</option>
                 <option value="false">Нет</option>
               </select>
+              <div class="invalid-feedback">
+                  Поле не должно быть пустым
+              </div>
             </div>
         </div>
       </div>
@@ -134,16 +188,38 @@
     <div class="card-body">
       <div formGroupName='passport'>
         <div class="form-row">
-          <div class="col">
+          <div class="col-md col-12">
             <div class="form-group">
               <label for="series">Серия</label>
-              <input formControlName='series'type="text" class="form-control" id="series" placeholder="Серия">
+              <input formControlName='series'type="text" class="form-control" id="series" placeholder="Серия"
+                [ngClass]="{'is-invalid': applicationMainInfo.controls['passport'].controls['series'].invalid &&
+                (applicationMainInfo.controls['passport'].controls['series'].dirty || applicationMainInfo.controls['passport'].controls['series'].touched) }"
+              >
+              <div class="invalid-feedback">
+                <span *ngIf="applicationMainInfo.controls['passport'].controls['series'].hasError('required')" >
+                  Поле не должно быть пустым 
+                </span>
+                <span *ngIf="applicationMainInfo.controls['passport'].controls['series'].hasError('pattern')">
+                  Введите действительные данные
+                </span>
+              </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md col-12">
             <div class="form-group">
               <label for="number">Номер</label>
-              <input formControlName='number' type="text" class="form-control" id="number" placeholder="Номер">
+              <input formControlName='number' type="text" class="form-control" id="number" placeholder="Номер"
+              [ngClass]="{'is-invalid': applicationMainInfo.controls['passport'].controls['series'].invalid &&
+                (applicationMainInfo.controls['passport'].controls['series'].dirty || applicationMainInfo.controls['passport'].controls['series'].touched) }"
+              >
+              <div class="invalid-feedback">
+                <span *ngIf="applicationMainInfo.controls['passport'].controls['number'].hasError('required')" >
+                  Поле не должно быть пустым 
+                </span>
+                <span *ngIf="applicationMainInfo.controls['passport'].controls['number'].hasError('pattern')">
+                  Введите действительные данные
+                </span>
+              </div>
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@ namespace StudCabinetREST.Controllers
         }
 
         [HttpGet("/api/info/faculties")]
-        public async Task<IEnumerable<FacultyResources>> Getfaculty(){
+        public async Task<IEnumerable<FacultyResources>> GetFaculty(){
             var faculties = await context.Faculty.ToListAsync();
 
             return mapper.Map<List<Faculty>, List<FacultyResources>>(faculties);

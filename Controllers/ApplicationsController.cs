@@ -31,8 +31,8 @@ namespace StudCabinetREST.Controllers
         public async Task<IActionResult> CreateApplication([FromBody]ApplicationMainInfoResource applicationResource){
 
             var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationResource);
-            context.ApplicationMainInfo.Add(application);
-            await context.SaveChangesAsync();
+            //context.ApplicationMainInfo.Add(application);
+            //await context.SaveChangesAsync();
             var result = mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(application);
             return Ok(result);
         }

@@ -239,7 +239,14 @@
             <div class="col">
               <div class="form-group">
                 <label for="dateOfIssue">Дата выдачи</label>
-                <input formControlName='dateOfIssue' type="text" class="form-control" id="dateOfIssue" placeholder="Дата выдачи">
+                <input formControlName='dateOfIssue' type="date" class="form-control" id="dateOfIssue" placeholder="Дата выдачи"
+                  [ngClass]="{'is-invalid': applicationMainInfo.controls['passport'].controls['dateOfIssue'].invalid &&
+                  (applicationMainInfo.controls['passport'].controls['dateOfIssue'].dirty ||
+                  applicationMainInfo.controls['passport'].controls['dateOfIssue'].touched) }"
+                >
+                <div class="invalid-feedback">
+                  Поле не должно быть пустым
+                </div>
               </div>
             </div>
         </div>
@@ -357,7 +364,8 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Отправить</button>
+  <button type="submit" [disabled] = "applicationMainInfo.invalid" class="btn btn-primary">Отправить</button>
+  <button type="submit" class="btn btn-primary">Отправить(в обход валидации)</button>
 </form>
 
 <pre>

@@ -62,7 +62,7 @@ export class ApplicationComponent implements OnInit {
     ]),
     'privileges': new FormArray([
       new FormGroup({
-        'name': new FormControl('', Validators.required)
+        'name': new FormControl('')
       })
     ]),
     'military': new FormGroup({
@@ -139,8 +139,15 @@ export class ApplicationComponent implements OnInit {
 
   onAddReward(){
     let dir = new FormGroup({
-      "name": new FormControl('', Validators.required),
+      "name": new FormControl(''),
     });
     (this.applicationMainInfo.controls['rewards'] as FormArray).push(dir);
+  }
+
+  onAddPrivilege(){
+    let dir = new FormGroup({
+      "name": new FormControl(''),
+    });
+    (this.applicationMainInfo.controls['privileges'] as FormArray).push(dir);
   }
 }

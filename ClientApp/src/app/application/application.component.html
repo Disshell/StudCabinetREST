@@ -331,6 +331,20 @@
       </div>
   </div>
   <div class="card mt-2">
+    <div class="card-header">Особые условия поступления</div>
+    <div class="card-body">
+      <app-privilege
+        *ngFor="let item of applicationMainInfo.controls['privileges'].controls; let i = index"
+        [parentForm]="applicationMainInfo.get('privileges')"
+        [formGroupIndex] = "i"
+      >
+      </app-privilege>
+    </div>
+    <div class="card-footer">
+        <button (click)='onAddPrivilege()' type="button" class="btn btn-primary">Добавить</button>
+    </div>
+</div>
+  <div class="card mt-2">
     <div class="card-header">Воинская обязанность</div>
     <div class="card-body">
       <div formGroupName='military'>

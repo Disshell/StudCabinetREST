@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 import { ApplicationService } from './services/application.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RewardComponent } from './application/reward/reward.component';
-import { PrivilegesComponent } from './application/privileges/privileges.component';
+import { PrivilegeComponent } from './application/privilege/privilege.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { PrivilegesComponent } from './application/privileges/privileges.compone
     RegistrationComponent,
     AdministrationComponent,
     RewardComponent,
-    PrivilegesComponent
+    PrivilegeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

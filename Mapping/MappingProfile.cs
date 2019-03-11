@@ -25,19 +25,26 @@ namespace StudCabinetREST.Mapping
             CreateMap<Reward, RewardResource>();
             CreateMap<Specialization, SpecializationResource>();
 
-            CreateMap<ApplicationResource, Application>();
-            CreateMap<ApplicationMainInfoResource, ApplicationMainInfo>();
+            CreateMap<ApplicationMainInfoResource, ApplicationMainInfo>()
+                .ForMember(a => a.ApplicationMainInfoId, opt => opt.Ignore());
+            CreateMap<ApplicationResource, Application>()
+                .ForMember(a => a.ApplicationId, opt => opt.Ignore());
             CreateMap<CertificateTypeResource, CertificateType>();
             CreateMap<DirectionResource, Direction>();
             CreateMap<EducationResource, Education>();
-            CreateMap<ExamResource, Exam>();
+            CreateMap<ExamResource, Exam>()
+                .ForMember(e => e.ExamId, opt => opt.Ignore());
             CreateMap<FacultyResources, Faculty>();
             CreateMap<InstitutionTypeResource, InstitutionType>();
-            CreateMap<MilitaryResource, Military>();
+            CreateMap<MilitaryResource, Military>()
+                .ForMember(m => m.MilitaryId, opt => opt.Ignore());
             CreateMap<ObjectResource, Object>();
-            CreateMap<PassportResource, Passport>();
-            CreateMap<PrivilegeResource, Privilege>();
-            CreateMap<RewardResource, Reward>();
+            CreateMap<PassportResource, Passport>()
+                .ForMember(p => p.PassportId, opt => opt.Ignore());
+            CreateMap<PrivilegeResource, Privilege>()
+                .ForMember(p => p.PrivilegeId, opt => opt.Ignore());
+            CreateMap<RewardResource, Reward>()
+                .ForMember(r => r.RewardId, opt => opt.Ignore());
             CreateMap<SpecializationResource, Specialization>();
         }
     }

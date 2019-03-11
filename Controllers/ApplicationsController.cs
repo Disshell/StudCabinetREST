@@ -28,13 +28,42 @@ namespace StudCabinetREST.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> CreateApplication([FromBody]ApplicationMainInfoResource applicationResource){
+        public async Task<IActionResult> CreateApplication([FromBody]ApplicationMainInfoResource applicationMainInfoResource){
 
-            var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationResource);
+            var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationMainInfoResource);
             context.ApplicationMainInfo.Add(application);
             await context.SaveChangesAsync();
             var result = mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(application);
             return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateApplication(int id, [FromBody]ApplicationMainInfoResource applicationMainInfoResource){
+            var applicationMainInfo = await context.ApplicationMainInfo
+            .Include(a => a.Military)
+            .Include(a => a.Passport)
+            .Include(a => a.Exams)
+            .Include(a => a.Applications)
+            .Include(a => a.Educations)
+            .Include(a => a.Privileges)
+            .Include(a => a.Rewards)
+            .SingleOrDefaultAsync(a => a.ApplicationMainInfoId == id);
+            if (applicationMainInfo == null)
+                return NotFound();
+            mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationMainInfoResource, applicationMainInfo);
+            await context.SaveChangesAsync();
+            var result = mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(applicationMainInfo);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteApplication(int id){
+            var applicationMainInfo = await context.ApplicationMainInfo.FindAsync(id);
+            if (applicationMainInfo == null)
+                return NotFound();
+            context.Remove(applicationMainInfo);
+            await context.SaveChangesAsync();
+            return Ok(200);
         }
     }
 }

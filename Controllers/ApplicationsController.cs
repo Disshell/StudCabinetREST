@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudCabinetREST.Controllers.Resources;
@@ -21,13 +22,14 @@ namespace StudCabinetREST.Controllers
             this.mapper = mapper;
         }
         [HttpGet()]
+        [Authorize]
         public async Task<IEnumerable<ApplicationMainInfoResource>> GetApplications(){
             var applications = await context.ApplicationMainInfo.ToListAsync();
 
             return mapper.Map<List<ApplicationMainInfo>, List<ApplicationMainInfoResource>>(applications);
         }
-
         [HttpPost()]
+        [Authorize]
         public async Task<IActionResult> CreateApplication([FromBody]ApplicationMainInfoResource applicationMainInfoResource){
 
             var application = mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationMainInfoResource);

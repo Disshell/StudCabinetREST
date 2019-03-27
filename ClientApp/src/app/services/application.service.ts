@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 @Injectable()
 export class ApplicationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient){}
   
   CreateApplication(applicationMainInfo){
     let headers = new HttpHeaders();
@@ -15,5 +15,6 @@ export class ApplicationService {
   GetApplication(){
     return this.http.get('/api/applications');
   }
+  
 
 }

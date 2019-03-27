@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'app';
   
-  constructor(public auth: AuthService) {
+  constructor(private auth: AuthService) {
     auth.handleAuthentication();
   }
 

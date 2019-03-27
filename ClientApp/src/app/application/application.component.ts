@@ -74,7 +74,7 @@ export class ApplicationComponent implements OnInit {
   }
 );
 
-  constructor(private infoService: InfoService, private applicationService: ApplicationService, public auth: AuthService) { }
+  constructor(private infoService: InfoService, private applicationService: ApplicationService, private auth: AuthService) { }
 
   objects;
   certificateTypes;
@@ -100,7 +100,8 @@ export class ApplicationComponent implements OnInit {
     .subscribe(res => this.directions = res);
     
     this.specializations = this.infoService.GetSpecializations()
-    .subscribe(res => this.specializations = res); 
+    .subscribe(res => this.specializations = res);
+     
   }
 
 

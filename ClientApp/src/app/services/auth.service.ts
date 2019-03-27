@@ -5,6 +5,7 @@ import * as auth0 from 'auth0-js';
 
 @Injectable()
 export class AuthService {
+  
   userProfile: any;
   private _idToken: string;
   private _accessToken: string;
@@ -55,7 +56,7 @@ export class AuthService {
     this._accessToken = authResult.accessToken;
     this._idToken = authResult.idToken;
     this._expiresAt = expiresAt;
-    console.log(authResult);
+    //console.log(authResult);
   }
 
   public renewTokens(): void {

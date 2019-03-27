@@ -6,7 +6,8 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li>
-                <a class="nav-item nav-link" [routerLink]='["/registration"]' (click)='collapse()'>Регистрация</a>
+                <a class="nav-item nav-link" [routerLink]='' (click)='onClick()' *ngIf="!auth.isAuthenticated()">Войти/Регистрация</a>
+                <a class="nav-item nav-link" [routerLink]='' (click)='onClick()' *ngIf="auth.isAuthenticated()">Выйти</a>
             </li>
             <li>
                 <a class="nav-item nav-link" [routerLink]='["/application"]' (click)='collapse()'>Подать заявку</a>

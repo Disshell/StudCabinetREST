@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { ApplicationService } from './../services/application.service';
 import { map } from 'rxjs/operators';
 import { InfoService } from './../services/info.service';
@@ -73,7 +74,7 @@ export class ApplicationComponent implements OnInit {
   }
 );
 
-  constructor(private infoService: InfoService, private applicationService: ApplicationService) { }
+  constructor(private infoService: InfoService, private applicationService: ApplicationService, public auth: AuthService) { }
 
   objects;
   certificateTypes;

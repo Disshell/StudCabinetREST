@@ -19,7 +19,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { RewardComponent } from './application/reward/reward.component';
 import { PrivilegeComponent } from './application/privilege/privilege.component';
 import { AuthService } from './services/auth.service';
-import { User } from './user.profile.directive';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { User } from './user.profile.directive';
     RegistrationComponent,
     AdministrationComponent,
     RewardComponent,
-    PrivilegeComponent,
-    User.ProfileDirective
+    PrivilegeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

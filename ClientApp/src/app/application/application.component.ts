@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { InfoService } from './../services/info.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { ApplicationMainInfo } from '../../../models/ApplicationMainInfo';
 
 @Component({
   selector: 'app-application',
@@ -76,6 +75,7 @@ export class ApplicationComponent implements OnInit {
 
   constructor(private infoService: InfoService, private applicationService: ApplicationService, private auth: AuthService) { }
 
+  profile: any;
   objects;
   certificateTypes;
   institutionTypes;
@@ -101,7 +101,15 @@ export class ApplicationComponent implements OnInit {
     
     this.specializations = this.infoService.GetSpecializations()
     .subscribe(res => this.specializations = res);
-     
+
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
+    }
+
   }
 
 
@@ -152,4 +160,9 @@ export class ApplicationComponent implements OnInit {
     });
     (this.applicationMainInfo.controls['privileges'] as FormArray).push(dir);
   }
+
+  onClick(){
+    console.log(this.profile)
+  }
+
 }

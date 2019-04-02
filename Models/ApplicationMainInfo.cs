@@ -5,6 +5,7 @@ namespace StudCabinetREST.Models
 {
     public class ApplicationMainInfo
     {
+        public string authId; 
         public ApplicationMainInfo()
         {
             Applications = new HashSet<Application>();

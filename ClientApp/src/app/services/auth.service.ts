@@ -5,11 +5,13 @@ import * as auth0 from 'auth0-js';
 
 @Injectable()
 export class AuthService {
-  
+
   userProfile: any;
+  roles: Array<string> = [];
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
+  
 
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
@@ -56,7 +58,6 @@ export class AuthService {
     this._accessToken = authResult.accessToken;
     this._idToken = authResult.idToken;
     this._expiresAt = expiresAt;
-    //console.log(authResult);
   }
 
   public renewTokens(): void {
@@ -76,6 +77,7 @@ export class AuthService {
     this._idToken = '';
     this._expiresAt = 0;
     // Go back to the home route
+    this.roles = [];
     this.router.navigate(['/']);
   }
 
@@ -85,15 +87,23 @@ export class AuthService {
     return this._accessToken && Date.now() < this._expiresAt;
   }
 
+  public isAdmin(): boolean {
+    if(this.roles.indexOf("admin") != -1)
+      return true
+    else
+      return false
+  }
+
   public getProfile(cb): void {
     if (!this._accessToken) {
       throw new Error('Access Token must exist to fetch profile');
     }
-  
+
     const self = this;
     this.auth0.client.userInfo(this._accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
+        self.roles = profile["https://studcabinet/roles"];
       }
       cb(err, profile);
     });

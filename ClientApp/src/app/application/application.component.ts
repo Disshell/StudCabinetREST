@@ -1,8 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { ApplicationService } from './../services/application.service';
-import { map } from 'rxjs/operators';
 import { InfoService } from './../services/info.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
@@ -10,7 +9,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.css']
 })
-export class ApplicationComponent implements OnInit {
+export class ApplicationComponent implements OnInit, DoCheck {
 
   applicationMainInfo: FormGroup = new FormGroup({
     'name': new FormControl('', Validators.required),
@@ -102,14 +101,18 @@ export class ApplicationComponent implements OnInit {
     this.specializations = this.infoService.GetSpecializations()
     .subscribe(res => this.specializations = res);
 
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile;
-    } else {
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
-    }
+  }
 
+  ngDoCheck(): void {
+    if(this.auth.accessToken != ""){
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile;
+      } else {
+        this.auth.getProfile((err, profile) => {
+          this.profile = profile;
+        });
+      }
+    }
   }
 
 
@@ -163,6 +166,7 @@ export class ApplicationComponent implements OnInit {
 
   onClick(){
     console.log(this.profile)
+    console.log(this.auth.roles)
   }
 
 }

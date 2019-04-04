@@ -1,5 +1,5 @@
 import { AuthService } from './../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoChek } from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,7 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 
-export class NavMenuComponent {
+export class NavMenuComponent implements DoChek {
+  profile: any;
+
+  ngDoCheck(): void {
+    if(this.auth.accessToken != ""){
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile;
+      } else {
+        this.auth.getProfile((err, profile) => {
+          this.profile = profile;
+        });
+      }
+    }
+  }
 
   isExpanded = false;
 

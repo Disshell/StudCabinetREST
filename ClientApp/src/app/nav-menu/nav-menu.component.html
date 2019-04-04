@@ -13,7 +13,7 @@
                 <a class="nav-item nav-link" [routerLink]='["/application"]' (click)='collapse()'>Подать заявку</a>
             </li>
             <li>
-                <a class="nav-item nav-link" [routerLink]='["/administration"]' (click)='collapse()'>Администрирование</a>
+                <a class="nav-item nav-link" [routerLink]='["/administration"]' *ngIf="auth.isAdmin()"(click)='collapse()'>Администрирование</a>
             </li>
         </ul>
     </div>

@@ -1,5 +1,5 @@
 import { AuthService } from './../services/auth.service';
-import { Component, DoChek } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,7 +7,7 @@ import { Component, DoChek } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 
-export class NavMenuComponent implements DoChek {
+export class NavMenuComponent implements DoCheck {
   profile: any;
 
   ngDoCheck(): void {

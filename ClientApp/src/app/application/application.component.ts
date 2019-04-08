@@ -165,8 +165,8 @@ export class ApplicationComponent implements OnInit, DoCheck {
   }
 
   onClick(){
-    console.log(this.profile)
-    console.log(this.auth.roles)
+    console.log(this.auth.idToken)
+    console.log(this.auth.accessToken)
   }
 
 }

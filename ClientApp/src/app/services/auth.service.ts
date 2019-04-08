@@ -72,11 +72,9 @@ export class AuthService {
   }
 
   public logout(): void {
-    // Remove tokens and expiry time
     this._accessToken = '';
     this._idToken = '';
     this._expiresAt = 0;
-    // Go back to the home route
     this.roles = [];
     this.router.navigate(['/']);
   }

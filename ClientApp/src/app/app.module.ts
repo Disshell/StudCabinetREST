@@ -1,9 +1,11 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { AdministrationComponent } from './administration/administration.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, CanActivate } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -42,11 +44,11 @@ import { AuthService } from './services/auth.service';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'application', component: ApplicationComponent},
-      { path: 'administration', component: AdministrationComponent},
+      { path: 'administration', component: AdministrationComponent, canActivate: [AdminAuthGuard] },
       { path: 'registration', component: RegistrationComponent}
     ])
   ],
-  providers: [InfoService, ApplicationService, AuthService],
+  providers: [InfoService, ApplicationService, AuthService, AuthGuard, AdminAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

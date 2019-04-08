@@ -5,6 +5,7 @@ namespace StudCabinetREST.Controllers.Resources
 {
     public class ApplicationMainInfoResource
     {
+        string authId;
         public ApplicationMainInfoResource()
         {
             Applications = new HashSet<ApplicationResource>();

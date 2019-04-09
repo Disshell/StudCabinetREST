@@ -117,7 +117,8 @@ export class ApplicationComponent implements OnInit, DoCheck {
 
 
   onSubmit(){
-    console.log(this.applicationMainInfo);
+    this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
+    console.log(this.applicationMainInfo.value);
     this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
       res => console.log(res)
     );
@@ -165,8 +166,6 @@ export class ApplicationComponent implements OnInit, DoCheck {
   }
 
   onClick(){
-    console.log(this.auth.idToken)
-    console.log(this.auth.accessToken)
   }
 
 }

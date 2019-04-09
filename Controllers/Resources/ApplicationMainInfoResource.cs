@@ -5,7 +5,6 @@ namespace StudCabinetREST.Controllers.Resources
 {
     public class ApplicationMainInfoResource
     {
-        string authId;
         public ApplicationMainInfoResource()
         {
             Applications = new HashSet<ApplicationResource>();
@@ -15,6 +14,7 @@ namespace StudCabinetREST.Controllers.Resources
             Rewards = new HashSet<RewardResource>();
         }
 
+        public string AuthId { get; set; }
         public int ApplicationMainInfoId { get; set; }
         public int PassportId { get; set; }
         public string Citizenship { get; set; }

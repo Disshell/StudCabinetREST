@@ -5,7 +5,6 @@ namespace StudCabinetREST.Models
 {
     public class ApplicationMainInfo
     {
-        public string authId; 
         public ApplicationMainInfo()
         {
             Applications = new HashSet<Application>();
@@ -15,6 +14,7 @@ namespace StudCabinetREST.Models
             Rewards = new HashSet<Reward>();
         }
 
+        public string AuthId {get; set;} 
         public int ApplicationMainInfoId { get; set; }
         public int PassportId { get; set; }
         public string Citizenship { get; set; }

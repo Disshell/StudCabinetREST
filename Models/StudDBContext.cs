@@ -44,11 +44,6 @@ namespace StudCabinetREST.Models
             .HasOne(a => a.Military)
             .WithOne(m => m.ApplicationMainInfo)
             .HasForeignKey<Military>(m => m.ApplicationMainInfoId);
-
-            modelBuilder.Entity<ApplicationMainInfo>()
-            .HasOne(a => a.Passport)
-            .WithOne(p => p.ApplicationMainInfo)
-            .HasForeignKey<Passport>(p => p.ApplicationMainInfoId);
         }
     }
 }

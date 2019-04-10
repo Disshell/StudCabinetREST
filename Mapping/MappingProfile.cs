@@ -39,8 +39,6 @@ namespace StudCabinetREST.Mapping
             CreateMap<MilitaryResource, Military>()
                 .ForMember(m => m.MilitaryId, opt => opt.Ignore());
             CreateMap<ObjectResource, Object>();
-            CreateMap<PassportResource, Passport>()
-                .ForMember(p => p.PassportId, opt => opt.Ignore());
             CreateMap<PrivilegeResource, Privilege>()
                 .ForMember(p => p.PrivilegeId, opt => opt.Ignore());
             CreateMap<RewardResource, Reward>()

@@ -16,7 +16,6 @@ namespace StudCabinetREST.Controllers.Resources
 
         public string AuthId { get; set; }
         public int ApplicationMainInfoId { get; set; }
-        public int PassportId { get; set; }
         public string Citizenship { get; set; }
         public string Name { get; set; }
         public string Surename { get; set; }

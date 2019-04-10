@@ -45,7 +45,6 @@ export class ApplicationComponent implements OnInit, DoCheck {
         'point': new FormControl('', Validators.required)
       })
     ]),
-    'totalPoint': new FormControl('0'),
     'rewards': new FormArray([
       new FormGroup({
         'name': new FormControl('')
@@ -80,7 +79,7 @@ export class ApplicationComponent implements OnInit, DoCheck {
   institutionTypes;
   faculties;
   directions;
-  specializations; 
+  specializations;
 
   ngOnInit() {
     this.infoService.GetObjects()
@@ -118,6 +117,8 @@ export class ApplicationComponent implements OnInit, DoCheck {
 
   onSubmit(){
     this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
+    this.applicationMainInfo.value["dateOfApplication"] = Date();
+    this.applicationMainInfo.value["status"] = "Обрабатыватся";
     console.log(this.applicationMainInfo.value);
     this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
       res => console.log(res)
@@ -164,8 +165,4 @@ export class ApplicationComponent implements OnInit, DoCheck {
     });
     (this.applicationMainInfo.controls['privileges'] as FormArray).push(dir);
   }
-
-  onClick(){
-  }
-
 }

@@ -12,7 +12,7 @@ export class AdministrationComponent implements OnInit {
   constructor(private applicationService: ApplicationService) { }
 
   ngOnInit() {
-    this.applicationService.GetApplication().subscribe(
+    this.applicationService.GetApplications().subscribe(
       res => this.applications = res
     );
   }

@@ -19,15 +19,24 @@ export class ApplicationService {
     return this.http.post('/api/applications', applicationMainInfo, { headers });
   }
 
-  GetApplication(){
+  GetApplications(){
     let headers = new HttpHeaders(
       {
         "Content-Type": "application/JSON",
         "Authorization": "Bearer " + this.auth.accessToken
       }
     );
-    console.log(headers.get("Authorization"))
     return this.http.get('/api/applications', {headers});
+  }
+
+  GetApplicationByAuthId(){
+    let headers = new HttpHeaders(
+      {
+        "Content-Type": "application/JSON",
+        "Authorization": "Bearer " + this.auth.accessToken
+      }
+    );
+    return this.http.get('/api/applications/' +  this.auth.userProfile["sub"] , {headers});
   }
   
 

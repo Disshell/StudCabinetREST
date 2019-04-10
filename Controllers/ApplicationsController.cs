@@ -28,6 +28,24 @@ namespace StudCabinetREST.Controllers
 
             return mapper.Map<List<ApplicationMainInfo>, List<ApplicationMainInfoResource>>(applications);
         }
+
+        [HttpGet("{authId}")]
+        [Authorize]
+        public async Task<ApplicationMainInfoResource> GetApplicationByAuthId(string authId){
+            var application = await context.ApplicationMainInfo
+            .Include(a => a.Military)
+            .Include(a => a.Passport)
+            .Include(a => a.Exams)
+            .Include(a => a.Applications)
+            .Include(a => a.Educations)
+            .Include(a => a.Privileges)
+            .Include(a => a.Rewards).
+            SingleOrDefaultAsync(a => a.AuthId == authId);
+            if(application == null)
+                return null;
+            return mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(application);
+        }
+
         [HttpPost()]
         [Authorize]
         public async Task<IActionResult> CreateApplication([FromBody]ApplicationMainInfoResource applicationMainInfoResource){

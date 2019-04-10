@@ -31,7 +31,7 @@ namespace StudCabinetREST.Controllers.Resources
         public string AddressFact { get; set; }
         public bool NeedOfHostel { get; set; }
         public string Language { get; set; }
-        public string Status {get; set;}
+        public string Status { get; set; }
         public DateTime? DateOfApplication { get; set; }
 
         public PassportResource Passport { get; set; }

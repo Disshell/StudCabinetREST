@@ -13,6 +13,9 @@
                 <a class="nav-item nav-link" [routerLink]='["/application"]' (click)='collapse()'>Подать заявку</a>
             </li>
             <li>
+                <a class="nav-item nav-link" [routerLink]='["/status"]' *ngIf="auth.isAuthenticated()" (click)='collapse()' >Проверить статус</a>
+            </li>
+            <li>
                 <a class="nav-item nav-link" [routerLink]='["/administration"]' *ngIf="auth.isAdmin()"(click)='collapse()'>Администрирование</a>
             </li>
         </ul>

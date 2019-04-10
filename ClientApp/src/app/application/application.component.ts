@@ -146,6 +146,7 @@ export class ApplicationComponent implements OnInit, DoCheck {
     else if(this.route.routeConfig.path == "route.routeConfig.path=='application/:auth"){
       this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
       this.applicationMainInfo.value["dateOfApplication"] = Date();
+      this.applicationMainInfo.value["status"] = "Обрабатыватся";
       console.log(this.applicationMainInfo.value);
       this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
       res => console.log(res)

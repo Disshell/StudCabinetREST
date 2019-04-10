@@ -2,6 +2,7 @@ import { Application } from './../../../models/application';
 import { ApplicationService } from './../services/application.service';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-status',
@@ -10,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusComponent implements OnInit {
 
-  constructor(private auth: AuthService, private ApplicationService: ApplicationService) { }
+  constructor(private auth: AuthService,
+    private ApplicationService: ApplicationService,
+    private router: Router
+    ) { }
 
   profile: any;
   date: Date;
@@ -36,6 +40,7 @@ export class StatusComponent implements OnInit {
   }
   
   onClick() {
+    this.router.navigate(['/application/' +  this.profile['sub']])
   }
 
 

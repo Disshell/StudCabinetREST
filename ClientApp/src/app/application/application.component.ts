@@ -3,6 +3,7 @@ import { ApplicationService } from './../services/application.service';
 import { InfoService } from './../services/info.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-application',
@@ -71,8 +72,19 @@ export class ApplicationComponent implements OnInit, DoCheck {
   }
 );
 
-  constructor(private infoService: InfoService, private applicationService: ApplicationService, private auth: AuthService) { }
+  constructor(private infoService: InfoService,
+    private applicationService: ApplicationService,
+    private auth: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) { 
 
+      route.params.subscribe( p => {
+        this.authId = p['authId']
+      });
+
+  }
+  authId: string;
   profile: any;
   objects;
   certificateTypes;
@@ -82,6 +94,14 @@ export class ApplicationComponent implements OnInit, DoCheck {
   specializations;
 
   ngOnInit() {
+    this.applicationService.GetApplicationByAuthId().subscribe(
+      a => {
+        this.applicationMainInfo.patchValue(a);
+      }
+    );
+
+    console.log(this.route)
+
     this.infoService.GetObjects()
     .subscribe(res => this.objects = res);
 
@@ -116,13 +136,20 @@ export class ApplicationComponent implements OnInit, DoCheck {
 
 
   onSubmit(){
-    this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
-    this.applicationMainInfo.value["dateOfApplication"] = Date();
-    this.applicationMainInfo.value["status"] = "Обрабатыватся";
-    console.log(this.applicationMainInfo.value);
-    this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
+    if(this.route.routeConfig.path == "application/new"){
+      this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
+      this.applicationMainInfo.value["dateOfApplication"] = Date();
+      this.applicationMainInfo.value["status"] = "Обрабатыватся";
+      console.log(this.applicationMainInfo.value);
+      this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(res => console.log(res))
+    }
+    else if(this.route.routeConfig.path == "route.routeConfig.path=='application/:auth"){
+      this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
+      this.applicationMainInfo.value["dateOfApplication"] = Date();
+      console.log(this.applicationMainInfo.value);
+      this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
       res => console.log(res)
-    );
+    }
   }
 
   onAddEducation(){

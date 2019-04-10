@@ -43,7 +43,7 @@ import { StatusComponent } from './status/status.component';
     CommonModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'application', component: ApplicationComponent},
+      { path: 'application/new', component: ApplicationComponent},
       { path: 'application/:auth', component: ApplicationComponent},
       { path: 'administration', component: AdministrationComponent, canActivate: [AdminAuthGuard] },
       { path: 'status', component: StatusComponent, canActivate: [AuthGuard]}

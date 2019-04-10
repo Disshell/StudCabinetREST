@@ -9,6 +9,7 @@
 <div class="card mt-2" *ngIf="auth.isAuthenticated()">
   <div class="card-header">Статус вашего заявления</div>
   <div class="card-body" >
+      Текущий статус: <span>{{status}}</span>
       <table class="table">
           <thead>
             <tr>
@@ -27,7 +28,6 @@
             </tr>
           </tbody>
         </table>
-    Текущий статус: {{status}}
     <hr>
     <button (click)="onClick()" class="btn btn-primary"> Редактировать </button>
   </div>

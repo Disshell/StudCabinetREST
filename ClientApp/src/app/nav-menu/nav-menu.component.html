@@ -10,7 +10,7 @@
                 <a class="nav-item nav-link" [routerLink]='' (click)='onClick()' *ngIf="auth.isAuthenticated()">Выйти</a>
             </li>
             <li>
-                <a class="nav-item nav-link" [routerLink]='["/application"]' (click)='collapse()'>Подать заявку</a>
+                <a class="nav-item nav-link" [routerLink]='["/application/new"]' (click)='collapse()'>Подать заявку</a>
             </li>
             <li>
                 <a class="nav-item nav-link" [routerLink]='["/status"]' *ngIf="auth.isAuthenticated()" (click)='collapse()' >Проверить статус</a>

@@ -1,3 +1,4 @@
+import { ApplicationMainInfo } from './../../../models/ApplicationMainInfo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
@@ -37,6 +38,18 @@ export class ApplicationService {
       }
     );
     return this.http.get('/api/applications/' +  this.auth.userProfile["sub"] , {headers});
+  }
+
+  EditApplicationByAuthId(applicationMainInfo, authId){
+    let headers = new HttpHeaders(
+      {
+        "Content-Type": "application/JSON",
+        "Authorization": "Bearer " + this.auth.accessToken
+      }
+    );
+    //headers.set('Content-Type', 'application/JSON');
+    //headers.append('Authorization', "Bearer " + this.auth.accessToken)
+    return this.http.put('/api/applications/'+ authId, applicationMainInfo, { headers });
   }
   
 

@@ -58,7 +58,8 @@ namespace StudCabinetREST.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateApplication(int id, [FromBody]ApplicationMainInfoResource applicationMainInfoResource){
+        [Authorize]
+        public async Task<IActionResult> UpdateApplicationById(int id, [FromBody]ApplicationMainInfoResource applicationMainInfoResource){
             var applicationMainInfo = await context.ApplicationMainInfo
             .Include(a => a.Military)
             .Include(a => a.Passport)
@@ -76,7 +77,28 @@ namespace StudCabinetREST.Controllers
             return Ok(result);
         }
 
+        [HttpPut("{authId}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateApplicationByAuthId(string authId, [FromBody]ApplicationMainInfoResource applicationMainInfoResource){
+            var applicationMainInfo = await context.ApplicationMainInfo
+            .Include(a => a.Military)
+            .Include(a => a.Passport)
+            .Include(a => a.Exams)
+            .Include(a => a.Applications)
+            .Include(a => a.Educations)
+            .Include(a => a.Privileges)
+            .Include(a => a.Rewards)
+            .SingleOrDefaultAsync(a => a.AuthId == authId);
+            if (applicationMainInfo == null)
+                return NotFound();
+            mapper.Map<ApplicationMainInfoResource, ApplicationMainInfo>(applicationMainInfoResource, applicationMainInfo);
+            await context.SaveChangesAsync();
+            var result = mapper.Map<ApplicationMainInfo, ApplicationMainInfoResource>(applicationMainInfo);
+            return Ok(result);
+        }
+
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteApplication(int id){
             var applicationMainInfo = await context.ApplicationMainInfo.FindAsync(id);
             if (applicationMainInfo == null)

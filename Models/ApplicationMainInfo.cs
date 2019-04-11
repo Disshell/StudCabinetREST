@@ -31,7 +31,7 @@ namespace StudCabinetREST.Models
         public bool NeedOfHostel { get; set; }
         public string Language { get; set; }
         public string Status {get; set;}
-        public DateTime? DateOfApplication { get; set; }
+        public string DateOfApplication { get; set; }
 
         public Passport Passport { get; set; }
         public Military Military {get; set;}

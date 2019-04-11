@@ -10,7 +10,7 @@ namespace StudCabinetREST.Models
         public string Series { get; set; }
         public string Number { get; set; }
         public string Department { get; set; }
-        public DateTime? DateOfIssue { get; set; }
+        public string DateOfIssue { get; set; }
         public int ApplicationMainInfoId {get; set;}
 
         public ApplicationMainInfo ApplicationMainInfo { get; set; }

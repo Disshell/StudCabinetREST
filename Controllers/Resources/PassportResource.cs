@@ -7,6 +7,6 @@ namespace StudCabinetREST.Controllers.Resources
         public string Series { get; set; }
         public string Number { get; set; }
         public string Department { get; set; }
-        public DateTime? DateOfIssue { get; set; }
+        public string DateOfIssue { get; set; }
     }
 }

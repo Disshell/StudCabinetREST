@@ -122,20 +122,19 @@ export class ApplicationComponent implements OnInit, DoCheck {
     .subscribe(res => this.objects = res);
 
     this.certificateTypes = this.infoService.GetСertificatetypes()
-    .subscribe( res => this.certificateTypes = res as Array<any>);
+    .subscribe( res => this.certificateTypes = res);
 
     this.institutionTypes = this.infoService.GetInstitutiontypes()
-    .subscribe( res => this.institutionTypes = res as Array<any>);
+    .subscribe( res => this.institutionTypes = res);
 
     this.faculties = this.infoService.GetFaculties()
-    .subscribe(res => this.faculties = res as Array<any>);
+    .subscribe(res => this.faculties = res);
 
     this.directions = this.infoService.GetDierection()
-    .subscribe(res => this.directions = res as Array<any>);
+    .subscribe(res => {this.directions = res});
     
     this.specializations = this.infoService.GetSpecializations()
-    .subscribe(res => this.specializations = res as Array<any>);
-
+    .subscribe(res => this.specializations = res);
   }
 
   ngDoCheck(): void {
@@ -162,7 +161,8 @@ export class ApplicationComponent implements OnInit, DoCheck {
       this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(res => console.log(res))
     }
     else if(this.route.routeConfig.path == "application/:auth"){
-      this.applicationMainInfo.value["dateOfApplication"] = new Date().getFullYear ;
+      this.applicationMainInfo.value["dateOfApplication"] = "";
+      this.applicationMainInfo.value["status"] = "Обрабатыватся";
       console.log(this.applicationMainInfo.value);
       this.applicationService.EditApplicationByAuthId(this.applicationMainInfo.value, this.profile['sub'] ).subscribe(
       res => console.log(res))

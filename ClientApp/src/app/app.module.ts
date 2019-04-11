@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, CanActivate } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -44,7 +44,7 @@ import { StatusComponent } from './status/status.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'application/new', component: ApplicationComponent},
-      { path: 'application/:auth', component: ApplicationComponent},
+      { path: 'application/:auth', component: ApplicationComponent, canActivate: [AuthGuard]},
       { path: 'administration', component: AdministrationComponent, canActivate: [AdminAuthGuard] },
       { path: 'status', component: StatusComponent, canActivate: [AuthGuard]}
     ])

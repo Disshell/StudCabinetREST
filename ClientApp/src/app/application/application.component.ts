@@ -122,19 +122,19 @@ export class ApplicationComponent implements OnInit, DoCheck {
     .subscribe(res => this.objects = res);
 
     this.certificateTypes = this.infoService.GetСertificatetypes()
-    .subscribe( res => this.certificateTypes = res);
+    .subscribe( res => this.certificateTypes = res as Array<any>);
 
     this.institutionTypes = this.infoService.GetInstitutiontypes()
-    .subscribe( res => this.institutionTypes = res);
+    .subscribe( res => this.institutionTypes = res as Array<any>);
 
     this.faculties = this.infoService.GetFaculties()
-    .subscribe(res => this.faculties = res);
+    .subscribe(res => this.faculties = res as Array<any>);
 
     this.directions = this.infoService.GetDierection()
-    .subscribe(res => this.directions = res);
+    .subscribe(res => this.directions = res as Array<any>);
     
     this.specializations = this.infoService.GetSpecializations()
-    .subscribe(res => this.specializations = res);
+    .subscribe(res => this.specializations = res as Array<any>);
 
   }
 

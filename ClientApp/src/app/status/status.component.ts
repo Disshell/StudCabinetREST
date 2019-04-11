@@ -35,7 +35,6 @@ export class StatusComponent implements OnInit {
     this.ApplicationService.GetApplicationByAuthId().subscribe( res => { 
       this.application = res
       this.status = this.application["status"];
-      console.log(this.application);
     } );
   }
   

@@ -26,9 +26,13 @@ namespace StudCabinetREST.Mapping
             CreateMap<Specialization, SpecializationResource>();
 
             CreateMap<ApplicationMainInfoResource, ApplicationMainInfo>()
-                .ForMember(a => a.ApplicationMainInfoId, opt => opt.Ignore());
+                .ForMember(a => a.ApplicationMainInfoId, opt => opt.Ignore())
+                .ForMember(a => a.AuthId, opt => opt.Ignore());
             CreateMap<ApplicationResource, Application>()
                 .ForMember(a => a.ApplicationId, opt => opt.Ignore());
+            CreateMap<PassportResource, Passport>()
+                .ForMember(p => p.ApplicationMainInfoId, opt => opt.Ignore())
+                .ForMember(p => p.PassportId, opt=> opt.Ignore());
             CreateMap<CertificateTypeResource, CertificateType>();
             CreateMap<DirectionResource, Direction>();
             CreateMap<EducationResource, Education>();

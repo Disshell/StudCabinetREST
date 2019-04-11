@@ -84,6 +84,7 @@ export class ApplicationComponent implements OnInit, DoCheck {
       });
 
   }
+
   authId: string;
   profile: any;
   objects;
@@ -94,13 +95,28 @@ export class ApplicationComponent implements OnInit, DoCheck {
   specializations;
 
   ngOnInit() {
-    this.applicationService.GetApplicationByAuthId().subscribe(
-      a => {
-        this.applicationMainInfo.patchValue(a);
-      }
-    );
-
-    console.log(this.route)
+    if(this.route.routeConfig.path == "application/:auth"){
+      this.applicationService.GetApplicationByAuthId().subscribe(
+        a => {
+          for(var i = 0 ; i<(a['exams'].length-1); i++){
+            this.onAddExam();
+          }
+          for(var i = 0 ; i<(a['applications'].length-1); i++){
+            this.onAddDirection();
+          }
+          for(var i = 0 ; i<(a['educations'].length-1); i++){
+            this.onAddEducation();
+          }
+          for(var i = 0 ; i<(a['privileges'].length-1); i++){
+            this.onAddPrivilege();
+          }
+          for(var i = 0 ; i<(a['rewards'].length-1); i++){
+            this.onAddReward();
+          }
+          this.applicationMainInfo.patchValue(a);
+        }
+      );
+    }
 
     this.infoService.GetObjects()
     .subscribe(res => this.objects = res);
@@ -136,20 +152,20 @@ export class ApplicationComponent implements OnInit, DoCheck {
 
 
   onSubmit(){
+~    console.log(this.route.routeConfig.path);
     if(this.route.routeConfig.path == "application/new"){
+      var date = new Date();
       this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
-      this.applicationMainInfo.value["dateOfApplication"] = Date();
+      this.applicationMainInfo.value["dateOfApplication"] =  "";
       this.applicationMainInfo.value["status"] = "Обрабатыватся";
       console.log(this.applicationMainInfo.value);
       this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(res => console.log(res))
     }
-    else if(this.route.routeConfig.path == "route.routeConfig.path=='application/:auth"){
-      this.applicationMainInfo.value["authId"] = this.auth.userProfile["sub"];
-      this.applicationMainInfo.value["dateOfApplication"] = Date();
-      this.applicationMainInfo.value["status"] = "Обрабатыватся";
+    else if(this.route.routeConfig.path == "application/:auth"){
+      this.applicationMainInfo.value["dateOfApplication"] = new Date().getFullYear ;
       console.log(this.applicationMainInfo.value);
-      this.applicationService.CreateApplication(this.applicationMainInfo.value).subscribe(
-      res => console.log(res)
+      this.applicationService.EditApplicationByAuthId(this.applicationMainInfo.value, this.profile['sub'] ).subscribe(
+      res => console.log(res))
     }
   }
 

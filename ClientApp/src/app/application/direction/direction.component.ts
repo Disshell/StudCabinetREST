@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -12,10 +12,15 @@ export class DirectionComponent implements OnInit {
   @Input() formGroupIndex: number;
   @Input() listOfFaculties;
   @Input() listOfDirections;
+  @Output() removedDirection = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
     this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
+  }
+
+  removeDirection(){
+    this.removedDirection.emit(this.formGroupIndex);
   }
 
 }

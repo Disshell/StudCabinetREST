@@ -1,5 +1,5 @@
 import { FormGroup, FormArray, AbstractControl } from '@angular/forms';
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-education',
@@ -11,10 +11,15 @@ export class EducationComponent implements OnInit {
   @Input() formGroupIndex: number;
   @Input() listOfInstitutionTypes;
   @Input() listOfCertificateTypes;
+  @Output() removedEducation = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
     this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
+  }
+
+  removeEducation(){
+    this.removedEducation.emit(this.formGroupIndex);
   }
 
 }

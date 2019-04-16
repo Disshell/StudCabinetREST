@@ -1,10 +1,20 @@
-<div class="form-group" [formGroup]="parentForm">
-  <label for="name">Название награды</label>
-  <input 
-    type="text"
-    class="form-control"
-    id="name"
-    placeholder="Название"
-    formControlName="name"
-  >
-</div>
+<div [formGroup]="parentForm">
+    <div class="form-row align-items-center">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="name">Название</label>
+          <input 
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Название"
+            formControlName="name"
+            >
+          </div>
+      </div>
+      <div class="col-md-2 pt-md-3">
+          <button (click)="removeReward()" type="button" class="btn btn-outline-danger btn-block ">Удалить</button>
+      </div>
+    </div>
+    </div>
+  <hr>

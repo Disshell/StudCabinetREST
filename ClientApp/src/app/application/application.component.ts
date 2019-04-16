@@ -179,12 +179,22 @@ export class ApplicationComponent implements OnInit, DoCheck {
     (this.applicationMainInfo.controls['educations'] as FormArray).push(ed);
   }
 
+  onRemoveEducation(index: number){
+    const control = <FormArray>this.applicationMainInfo.controls.educations;
+    control.removeAt(index);
+    //this.directionCount--;
+  }
+
   onAddExam(){
     let ex = new FormGroup({
       'objectId': new FormControl('', Validators.required),
       'point': new FormControl('', Validators.required)
     });
     (this.applicationMainInfo.controls['exams'] as FormArray).push(ex);
+  }
+  onRemoveExam(index: number){
+    const control = <FormArray>this.applicationMainInfo.controls.exams;
+    control.removeAt(index);
   }
 
   onAddDirection(){
@@ -195,18 +205,32 @@ export class ApplicationComponent implements OnInit, DoCheck {
     });
     (this.applicationMainInfo.controls['applications'] as FormArray).push(dir);
   }
+  onRemoveDirection(index: number){
+    const control = <FormArray>this.applicationMainInfo.controls.applications;
+    control.removeAt(index);
+  }
 
   onAddReward(){
-    let dir = new FormGroup({
+    let rwd = new FormGroup({
       "name": new FormControl(''),
     });
-    (this.applicationMainInfo.controls['rewards'] as FormArray).push(dir);
+    (this.applicationMainInfo.controls['rewards'] as FormArray).push(rwd);
+  }
+
+  onRemoveReward(index: number){
+    const control = <FormArray>this.applicationMainInfo.controls.rewards;
+    control.removeAt(index);
   }
 
   onAddPrivilege(){
-    let dir = new FormGroup({
+    let prv = new FormGroup({
       "name": new FormControl(''),
     });
-    (this.applicationMainInfo.controls['privileges'] as FormArray).push(dir);
+    (this.applicationMainInfo.controls['privileges'] as FormArray).push(prv);
+  }
+
+  onRemovePrivilege(index: number){
+    const control = <FormArray>this.applicationMainInfo.controls.privileges;
+    control.removeAt(index);
   }
 }

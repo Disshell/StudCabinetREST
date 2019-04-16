@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ export class RewardComponent implements OnInit {
 
   @Input() parentForm: FormGroup;
   @Input() formGroupIndex: number;
+  @Output() removedReward= new EventEmitter<number>();
   
   constructor() { }
 
@@ -17,4 +18,7 @@ export class RewardComponent implements OnInit {
     this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
   }
 
+  removeReward(){
+    this.removedReward.emit(this.formGroupIndex);
+  }
 }

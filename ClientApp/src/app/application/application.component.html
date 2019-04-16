@@ -286,6 +286,7 @@
         [formGroupIndex] = "i"
         [listOfInstitutionTypes]= "institutionTypes"
         [listOfCertificateTypes] = "certificateTypes"
+        (removedEducation) = "onRemoveEducation($event)"
       >
       </app-education>
     </div>
@@ -300,7 +301,8 @@
       *ngFor="let item of applicationMainInfo.controls['exams'].controls; let i = index"
       [parentForm]="applicationMainInfo.get('exams')"
       [formGroupIndex] = "i"
-      [listOfObjects]= "objects"
+      [listOfObjects] = "objects"
+      (removedExam) = "onRemoveExam($event)"
       ></app-exam>
     </div>
     <div class="card-footer">
@@ -316,6 +318,7 @@
           [formGroupIndex] = "i"
           [listOfFaculties]= "faculties"
           [listOfDirections] = "directions"
+          (removedDirection) = "onRemoveDirection($event)"
         >
 
         </app-direction>
@@ -331,6 +334,7 @@
           *ngFor="let item of applicationMainInfo.controls['rewards'].controls; let i = index"
           [parentForm]="applicationMainInfo.get('rewards')"
           [formGroupIndex] = "i"
+          (removedReward) = "onRemoveReward($event)"
         >
         </app-reward>
       </div>
@@ -345,6 +349,7 @@
         *ngFor="let item of applicationMainInfo.controls['privileges'].controls; let i = index"
         [parentForm]="applicationMainInfo.get('privileges')"
         [formGroupIndex] = "i"
+        (removedPrivilege) = "onRemovePrivilege($event)"
       >
       </app-privilege>
     </div>

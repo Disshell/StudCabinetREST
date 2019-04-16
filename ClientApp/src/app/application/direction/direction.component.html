@@ -1,6 +1,6 @@
 <div [formGroup]="parentForm">
-    <div class="form-row">
-      <div class="col-md-6">
+    <div class="form-row align-items-center">
+      <div class="col-md-5">
           <div class="form-group">
             <label for="facultyId">Факультет</label>
             <select class="form-control" formControlName="facultyId" id="facultyId">
@@ -13,7 +13,7 @@
             </select>
           </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="form-group">
           <label for="directionId">Направление</label>
           <select class="form-control" formControlName="directionId" id="directionId">
@@ -25,6 +25,9 @@
             </option>
           </select>
         </div>
+      </div>
+      <div class="col-md-2 pt-md-3">
+          <button (click)="removeDirection()" type="button" class="btn btn-outline-danger btn-block">Удалить</button>
       </div>
     </div>
   </div>

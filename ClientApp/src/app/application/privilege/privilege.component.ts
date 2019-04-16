@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ export class PrivilegeComponent implements OnInit {
 
   @Input() parentForm: FormGroup;
   @Input() formGroupIndex: number;
+  @Output() removedPrivilege = new EventEmitter<number>();
   
   constructor() { }
 
@@ -17,4 +18,7 @@ export class PrivilegeComponent implements OnInit {
     this.parentForm = <FormGroup>this.parentForm.controls[this.formGroupIndex];
   }
 
+  removePrivilege(){
+    this.removedPrivilege.emit(this.formGroupIndex);
+  }
 }
